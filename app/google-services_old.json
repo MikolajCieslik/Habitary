@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "213689535979",
+    "project_id": "habitary-6eb0a",
+    "storage_bucket": "habitary-6eb0a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:213689535979:android:ce89c99bce4a72ba2b9dae",
+        "android_client_info": {
+          "package_name": "com.example.habitary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "213689535979-ine88ncp69r8s9dpn411l1moovgf6bne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCX0N6VY7SEyNU-ODRmJ_nznDwZwTkqep0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "213689535979-ine88ncp69r8s9dpn411l1moovgf6bne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
