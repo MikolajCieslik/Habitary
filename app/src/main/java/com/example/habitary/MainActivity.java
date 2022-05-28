@@ -11,9 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.habitary.fragment.PomodoroFragment;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 import com.example.habitary.menu.DrawerAdapter;
@@ -77,13 +79,37 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
     @Override
     public void onItemSelected(int position) {
-        if (position == POS_SETTINGS) {
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if (position == POS_HOME){
+            CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
+            transaction.replace(R.id.container, dashBoardFragment);
+        }
+        else if (position == POS_TASKS){
+            CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
+            transaction.replace(R.id.container, dashBoardFragment);
+        }
+        else if (position == POS_HABITS){
+            CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
+            transaction.replace(R.id.container, dashBoardFragment);
+        }
+        else if (position == POS_POMODORO){
+            PomodoroFragment pomodoroFragment = new PomodoroFragment();
+            transaction.replace(R.id.container, pomodoroFragment);
+        }
+        else if (position == POS_ABOUT){
+            CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
+            transaction.replace(R.id.container, dashBoardFragment);
+        }
+        else if (position == POS_SETTINGS){
             finish();
         }
+
         slidingRootNav.closeMenu();
-        Fragment selectedScreen = CenteredTextFragment.createFor(screenTitles[position]);
-        showFragment(selectedScreen);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
+
 
     private void showFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
