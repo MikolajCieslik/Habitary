@@ -1,8 +1,11 @@
 package com.example.habitary;
 
+import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
@@ -15,7 +18,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.habitary.fragment.CreateTaskFragment;
 import com.example.habitary.fragment.PomodoroFragment;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 import com.example.habitary.menu.DrawerAdapter;
@@ -39,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private Drawable[] screenIcons;
 
     private SlidingRootNav slidingRootNav;
+
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         list.setAdapter(adapter);
 
         adapter.setSelected(POS_HOME);
+
+        db = FirebaseFirestore.getInstance();
+
     }
 
     @Override
@@ -82,20 +94,24 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if (position == POS_HOME){
-            CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
-            transaction.replace(R.id.container, dashBoardFragment);
+            /*CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
+            transaction.replace(R.id.container, dashBoardFragment);*/
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new CenteredTextFragment()).commit();
         }
         else if (position == POS_TASKS){
-            CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
-            transaction.replace(R.id.container, dashBoardFragment);
+            //CreateTaskFragment createTaskFragment = new CreateTaskFragment();
+            //transaction.replace(R.id.container, createTaskFragment);
+            //getSupportFragmentManager().beginTransaction().replace(R.id.container, new CreateTaskFragment()).commit();
         }
         else if (position == POS_HABITS){
             CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
             transaction.replace(R.id.container, dashBoardFragment);
         }
         else if (position == POS_POMODORO){
-            PomodoroFragment pomodoroFragment = new PomodoroFragment();
-            transaction.replace(R.id.container, pomodoroFragment);
+            /*PomodoroFragment pomodoroFragment = new PomodoroFragment();
+            transaction.replace(R.id.container, pomodoroFragment);*/
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new PomodoroFragment()).commit();
+
         }
         else if (position == POS_ABOUT){
             CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
@@ -147,4 +163,5 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private int color(@ColorRes int res) {
         return ContextCompat.getColor(this, res);
     }
+
 }
