@@ -4,5 +4,7 @@
     <string name="category">Category</string>
     <string name="start_time">Start time</string>
     <string name="end_time">End time</string>
+    <string name="description">Description</string>
+    <string name="save">Save</string>
 
 </resources>

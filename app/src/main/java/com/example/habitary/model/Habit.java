@@ -2,10 +2,12 @@ package com.example.habitary.model;
 
 import com.google.firebase.Timestamp;
 
+import java.util.List;
+
 public class Habit {
     String name;
     String description;
-    String frequency;//nie wiem jaki typ
+    List<String> frequency;
     Integer streakCounter;
     Boolean finishFlag;
     Timestamp alertDate;
@@ -14,7 +16,7 @@ public class Habit {
     public Habit(){
     }
 
-    public Habit(String name, String description, String frequency, Timestamp alertDate, String idUser){
+    public Habit(String name, String description, List<String> frequency, Timestamp alertDate, String idUser){
         this.name = name;
         this.description = description;
         this.frequency = frequency;
@@ -32,7 +34,7 @@ public class Habit {
         return description;
     }
 
-    public String getFrequency() {
+    public List<String> getFrequency() {
         return frequency;
     }
 
@@ -60,7 +62,7 @@ public class Habit {
         this.description = description;
     }
 
-    public void setFrequency(String frequency) {
+    public void setFrequency(List<String> frequency) {
         this.frequency = frequency;
     }
 
