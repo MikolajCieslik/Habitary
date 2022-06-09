@@ -11,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
-import com.example.habitary.CreateHabitActivity;
 import com.example.habitary.CreateTaskActivity;
 import com.example.habitary.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -55,14 +54,6 @@ public class CenteredTextFragment extends Fragment {
                         @Override
                         public void onClick(View view) {
                             Intent intent = new Intent(view.getContext(), CreateTaskActivity.class);
-                            startActivity(intent);
-                            //getSupportFragmentManager().beginTransaction().replace(R.id.container, new CreateTaskFragment()).commit();
-                        }
-                    });
-                    floatingActionButton3.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(view.getContext(), CreateHabitActivity.class);
                             startActivity(intent);
                             //getSupportFragmentManager().beginTransaction().replace(R.id.container, new CreateTaskFragment()).commit();
                         }

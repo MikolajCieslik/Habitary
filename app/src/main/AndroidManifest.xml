@@ -13,9 +13,6 @@
             android:name=".CreateTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateHabitActivity"
-            android:exported="false" />
-        <activity
             android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
