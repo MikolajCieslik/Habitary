@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ToggleButton
+        android:id="@+id/tbTuesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:text="Tuesday"
+        android:textOff="Tuesday"
+        android:textOn="Tuesday"
+        app:layout_constraintStart_toEndOf="@+id/tbMonday"
+        app:layout_constraintTop_toTopOf="@+id/tbMonday" />
+
+    <ToggleButton
+        android:id="@+id/tbSunday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="13dp"
+        android:text="Sunday"
+        android:textOff="Sunday"
+        android:textOn="Sunday"
+        app:layout_constraintStart_toEndOf="@+id/tbSaturday"
+        app:layout_constraintTop_toBottomOf="@+id/tbThursday" />
+
+    <ToggleButton
+        android:id="@+id/tbSaturday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="9dp"
+        android:text="Saturday"
+        android:textOff="Saturday"
+        android:textOn="Saturday"
+        app:layout_constraintEnd_toStartOf="@+id/tbSunday"
+        app:layout_constraintTop_toBottomOf="@+id/tbTuesday" />
+
+    <TextView
+        android:id="@+id/tvAlertTime2"
+        android:layout_width="107dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="236dp"
+        android:layout_marginEnd="160dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAlertDate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="236dp"
+        android:text="Alert time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/materialToolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSave2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/tvBack2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_left_24" />
+
+    <TextView
+        android:id="@+id/tvDescriptionHabit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvAlertDate2" />
+
+    <EditText
+        android:id="@+id/etDescriptionHabit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="34dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toEndOf="@+id/tvDescriptionHabit"
+        app:layout_constraintTop_toBottomOf="@+id/tvAlertDate2"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/tvHabitName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="66dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar2" />
+
+    <EditText
+        android:id="@+id/etHabitName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="56dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toEndOf="@+id/tvHabitName"
+        app:layout_constraintTop_toBottomOf="@+id/materialToolbar2"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ToggleButton
+        android:id="@+id/tbMonday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="119dp"
+        android:checked="false"
+        android:text="Monday"
+        android:textOff="Monday"
+        android:textOn="Monday"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescriptionHabit" />
+
+    <TextView
+        android:id="@+id/tvFrequencyHabit"
+        android:layout_width="119dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="148dp"
+        android:text="Frequency"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etDescriptionHabit" />
+
+    <ToggleButton
+        android:id="@+id/tbFriday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="9dp"
+        android:text="Friday"
+        android:textOff="Friday"
+        android:textOn="Friday"
+        app:layout_constraintEnd_toStartOf="@+id/tbSaturday"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbTuesday" />
+
+    <ToggleButton
+        android:id="@+id/tbThursday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:text="Thursday"
+        android:textOff="Thursday"
+        android:textOn="Thursday"
+        app:layout_constraintStart_toEndOf="@+id/tbWednesday"
+        app:layout_constraintTop_toTopOf="@+id/tbWednesday" />
+
+    <ToggleButton
+        android:id="@+id/tbWednesday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:text="Wednesday"
+        android:textOff="Wednesday"
+        android:textOn="Wednesday"
+        app:layout_constraintStart_toEndOf="@+id/tbTuesday"
+        app:layout_constraintTop_toTopOf="@+id/tbTuesday" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
