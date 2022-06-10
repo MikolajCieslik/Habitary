@@ -1,11 +1,10 @@
 package com.example.habitary;
 
-import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
@@ -18,11 +17,13 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.habitary.fragment.CreateTaskFragment;
 import com.example.habitary.fragment.PomodoroFragment;
-import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.habitary.model.Task;
+import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
 import com.example.habitary.menu.DrawerAdapter;
@@ -31,6 +32,7 @@ import com.example.habitary.menu.SimpleItem;
 import com.example.habitary.menu.SpaceItem;
 import com.example.habitary.fragment.CenteredTextFragment;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener {
@@ -47,7 +49,12 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
     private SlidingRootNav slidingRootNav;
 
+    RecyclerView rv;
+    ArrayList<Task> taskArrayList;
+    TaskRVAdapter taskAdapter;
+
     FirebaseFirestore db;
+    public static final String COLLECTION = "Tasks";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -56,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         slidingRootNav = new SlidingRootNavBuilder(this)
                 .withToolbarMenuToggle(toolbar)
@@ -87,6 +95,46 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
         db = FirebaseFirestore.getInstance();
 
+        rv = findViewById(R.id.rvTasks);
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+
+        taskArrayList = new ArrayList<>();
+        taskAdapter = new TaskRVAdapter(MainActivity.this, taskArrayList);
+
+        rv.setAdapter(taskAdapter);
+
+        EventChangeListener();
+
+
+    }
+
+    private void EventChangeListener() {
+
+        db.collection(COLLECTION)
+                .addSnapshotListener((value, error) -> {
+
+                    if (error != null) {
+                        Log.e("Firestore fail", error.getMessage());
+                        return;
+                    }
+                    assert value != null;
+                    for (DocumentChange dc : value.getDocumentChanges()) {
+                        if (dc.getType() == DocumentChange.Type.ADDED) {
+
+                            taskArrayList.add(dc.getDocument().toObject(Task.class));
+                        }
+
+                        taskAdapter.notifyDataSetChanged();
+
+                    }
+                
+                });
+    }
+
+    public void pokazToast(String txt){
+        Toast toast = Toast.makeText( getApplicationContext() , txt , Toast.LENGTH_LONG );
+        toast.show();
     }
 
     @Override
@@ -163,5 +211,6 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private int color(@ColorRes int res) {
         return ContextCompat.getColor(this, res);
     }
+
 
 }

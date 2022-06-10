@@ -9,16 +9,26 @@
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout_conversion_absoluteHeight="0dp"
+        tools:layout_editor_absoluteY="731dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_conversion_absoluteWidth="411dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary" />
+            android:background="@color/colorPrimary"
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_editor_absoluteY="731dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_conversion_absoluteWidth="411dp" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+
 
     <FrameLayout
         android:id="@+id/container"
@@ -36,7 +46,6 @@
             android:visibility="invisible"
             app:srcCompat="@android:drawable/ic_input_add"
             tools:ignore="SpeakableTextPresentCheck" />
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fABAdd2"
             android:layout_width="412dp"
@@ -48,7 +57,6 @@
             android:visibility="invisible"
             app:srcCompat="@android:drawable/ic_input_add"
             tools:ignore="SpeakableTextPresentCheck" />
-
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fABAdd"
             android:layout_width="412dp"
@@ -59,7 +67,16 @@
             android:clickable="true"
             app:srcCompat="@android:drawable/ic_input_add"
             tools:ignore="SpeakableTextPresentCheck" />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTasks"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_conversion_absoluteHeight="731dp"
+            tools:layout_conversion_absoluteWidth="411dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
     </FrameLayout>
+
 
 
 </LinearLayout>

@@ -6,5 +6,10 @@
     <string name="end_time">End time</string>
     <string name="description">Description</string>
     <string name="save">Save</string>
+    <string name="stringName">Name</string>
+    <string name="stringCategory">Category:</string>
+    <string name="stringDescription">Description:</string>
+    <string name="stringStartDate">Start Date:</string>
+    <string name="stringEndDate">End Date:</string>
 
 </resources>
