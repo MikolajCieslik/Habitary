@@ -68,10 +68,12 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                 } else {
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
+                /*
                 ////
                 Intent intent = new Intent(EmailPasswordActivity.this, MainActivity.class);
                 startActivity(intent);
                 ////
+                 */
                 updateUI(user);
             }
         };

@@ -50,4 +50,10 @@
     <string name="status_sign_in_failed">Sign-in failed</string>
     <string name="instant_validation">(instant validation)</string>
     <string name="firebase_status_fmt">Firebase User: %s</string>
+
+    <string name="stringName">Name</string>
+    <string name="stringCategory">Category:</string>
+    <string name="stringDescription">Description:</string>
+    <string name="stringStartDate">Start Date:</string>
+    <string name="stringEndDate">End Date:</string>
 </resources>

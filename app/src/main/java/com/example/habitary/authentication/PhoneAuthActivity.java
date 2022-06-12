@@ -185,10 +185,13 @@ public class PhoneAuthActivity extends AppCompatActivity implements View.OnClick
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
                     FirebaseUser user = task.getResult().getUser();
+                    /*
                     ////
                     Intent intent = new Intent(PhoneAuthActivity.this, MainActivity.class);
                     startActivity(intent);
                     ////
+
+                     */
                     updateUI(STATE_SIGNIN_SUCCESS, user);
                 } else {
                     if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
