@@ -38,9 +38,15 @@
             android:label="@string/label_facebook_login"/>
         <activity
             android:name=".authentication.EmailPasswordActivity"
-            android:exported="false" />
+            android:exported="true" >
             android:label="@string/label_emailpassword"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
         <activity
             android:name=".authentication.BaseActivity"
             android:exported="false" />
@@ -53,13 +59,8 @@
             android:label="@string/label_anonymous_auth"/>
         <activity
             android:name=".LauncherActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="true" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".CreateTaskActivity"
             android:exported="false" />

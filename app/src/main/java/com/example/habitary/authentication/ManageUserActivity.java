@@ -1,6 +1,7 @@
 package com.example.habitary.authentication;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.habitary.SplashScreen;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,6 +43,7 @@ public class ManageUserActivity extends BaseActivity implements View.OnClickList
         mEditTextPassword = findViewById(R.id.field_password);
         mEditTextEmailReset = findViewById(R.id.field_email_reset);
 
+        findViewById(R.id.sign_out_button2).setOnClickListener(this);
         findViewById(R.id.update_profile_button).setOnClickListener(this);
         findViewById(R.id.update_email_button).setOnClickListener(this);
         findViewById(R.id.update_password_button).setOnClickListener(this);
@@ -84,6 +87,9 @@ public class ManageUserActivity extends BaseActivity implements View.OnClickList
                 if (validateForm()) {
                     updateNameAndPhoto(user);
                 }
+                break;
+            case R.id.sign_out_button2:
+                signOut();
                 break;
             case R.id.update_email_button:
                 if (validateEmail(mEditTextEmail)) {
@@ -171,6 +177,26 @@ public class ManageUserActivity extends BaseActivity implements View.OnClickList
         hideProgressDialog();
     }
 
+    private void signOut() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setMessage(R.string.logout);
+        alert.setCancelable(false);
+        alert.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                mAuth.signOut();
+                updateUI(null);
+                startActivity(new Intent(ManageUserActivity.this, EmailPasswordActivity.class));
+            }
+        });
+        alert.setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        alert.show();
+    }
     private void updateNameAndPhoto(FirebaseUser user) {
         showProgressDialog();
         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()

@@ -32,8 +32,12 @@ import java.net.URL;
 
 import com.example.habitary.R;
 
+/*
+- If user is already signed in, it takes him straight to SplashScreen and Toast is displayed.
+- Authentication passed by Intent.
+ */
 public class EmailPasswordActivity extends BaseActivity implements View.OnClickListener {
-    private static final String TAG = "Login with E-mail";
+    private static final String TAG = "Login with E-mail"; //Window TAG
     private EditText mEdtEmail, mEdtPassword;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -68,12 +72,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                 } else {
                     Log.d(TAG, "onAuthStateChanged:signed_out");
                 }
-                /*
-                ////
-                Intent intent = new Intent(EmailPasswordActivity.this, MainActivity.class);
-                startActivity(intent);
-                ////
-                 */
+
                 updateUI(user);
             }
         };
@@ -137,6 +136,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                     mTextViewProfile.setTextColor(Color.RED);
                     mTextViewProfile.setText(task.getException().getMessage());
                 } else {
+                    //startActivity(new Intent(EmailPasswordActivity.this,SplashScreen.class)); //On createAccount open SplashScreen
                     mTextViewProfile.setTextColor(Color.DKGRAY);
                 }
                 hideProgressDialog();
@@ -157,6 +157,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                     mTextViewProfile.setTextColor(Color.RED);
                     mTextViewProfile.setText(task.getException().getMessage());
                 } else {
+                    //startActivity(new Intent(EmailPasswordActivity.this,SplashScreen.class)); //On signIn open SplashScreen
                     mTextViewProfile.setTextColor(Color.DKGRAY);
                 }
                 hideProgressDialog();
@@ -200,9 +201,15 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
 
     private void updateUI(FirebaseUser user) {
         if (user != null) {
+            Toast.makeText(
+                    EmailPasswordActivity.this, "User signed in", Toast.LENGTH_SHORT
+            ).show();
+            startActivity(new Intent(EmailPasswordActivity.this,SplashScreen.class));
             if (user.getPhotoUrl() != null) {
                 new DownloadImageTask().execute(user.getPhotoUrl().toString());
             }
+            //TESTING: This whole block's purpose is to test user Auth fields.
+            /*
             mTextViewProfile.setText("DisplayName: " + user.getDisplayName());
             mTextViewProfile.append("\n\n");
             mTextViewProfile.append("Email: " + user.getEmail());
@@ -219,7 +226,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
 
             findViewById(R.id.email_password_buttons).setVisibility(View.GONE);
             findViewById(R.id.email_password_fields).setVisibility(View.GONE);
-            findViewById(R.id.signout_zone).setVisibility(View.VISIBLE);
+            findViewById(R.id.signout_zone).setVisibility(View.VISIBLE);*/
         } else {
             mTextViewProfile.setText(null);
 

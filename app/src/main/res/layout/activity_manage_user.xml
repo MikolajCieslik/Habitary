@@ -33,12 +33,18 @@
             android:layout_below="@id/profile"
             android:orientation="vertical">
 
+            <Button
+                android:id="@+id/sign_out_button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/sign_out" />
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:background="@android:color/darker_gray"/>
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 style="@style/TextAppearance.AppCompat.Medium"
@@ -46,14 +52,14 @@
                 android:layout_height="wrap_content"
                 android:text="@string/title_provider"
                 android:textColor="@color/colorPrimary"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/provider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                tools:text="@string/app_name"/>
+                tools:text="@string/app_name" />
 
         </LinearLayout>
 
