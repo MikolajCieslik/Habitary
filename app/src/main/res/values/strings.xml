@@ -56,4 +56,6 @@
     <string name="stringDescription">Description:</string>
     <string name="stringStartDate">Start Date:</string>
     <string name="stringEndDate">End Date:</string>
+    <string name="hint_login">Login</string>
+    <string name="hint_surname">Surname</string>
 </resources>

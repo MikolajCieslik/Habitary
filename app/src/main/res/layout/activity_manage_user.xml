@@ -86,11 +86,25 @@
                 android:textStyle="bold"/>
 
             <EditText
+                android:id="@+id/field_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_login"
+                android:inputType="textPersonName" />
+
+            <EditText
                 android:id="@+id/field_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_name"
                 android:inputType="textPersonName"/>
+
+            <EditText
+                android:id="@+id/field_surname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_surname"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/field_photo"

@@ -22,13 +22,17 @@ import com.google.firebase.auth.UserInfo;
 import com.google.firebase.auth.UserProfileChangeRequest;
 
 import com.example.habitary.R;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ManageUserActivity extends BaseActivity implements View.OnClickListener {
     private static final String TAG = "ManageUserActivity";
-    private EditText mEditTextName, mEditTextPhoto, mEditTextEmail, mEditTextPassword, mEditTextEmailReset;
+    private EditText mEditTextLogin, mEditTextName, mEditTextSurname, mEditTextPhoto, mEditTextEmail, mEditTextPassword, mEditTextEmailReset;
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private TextView mTextViewProfile, mTextViewProvider;
+
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,9 @@ public class ManageUserActivity extends BaseActivity implements View.OnClickList
 
         mTextViewProfile = findViewById(R.id.profile);
         mTextViewProvider = findViewById(R.id.provider);
+        mEditTextLogin = findViewById(R.id.field_login);
         mEditTextName = findViewById(R.id.field_name);
+        mEditTextSurname = findViewById(R.id.field_surname);
         mEditTextPhoto = findViewById(R.id.field_photo);
         mEditTextEmail = findViewById(R.id.field_email);
         mEditTextPassword = findViewById(R.id.field_password);
@@ -50,6 +56,7 @@ public class ManageUserActivity extends BaseActivity implements View.OnClickList
         findViewById(R.id.send_password_reset_button).setOnClickListener(this);
         findViewById(R.id.delete_button).setOnClickListener(this);
 
+        db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -209,6 +216,13 @@ public class ManageUserActivity extends BaseActivity implements View.OnClickList
                 if (task.isSuccessful()) {
                     mTextViewProfile.setTextColor(Color.DKGRAY);
                     mTextViewProfile.setText(getString(R.string.updated, "User profile"));
+
+                    DocumentReference nameandphotoRef = db.collection("Users").document(mAuth.getCurrentUser().getUid());
+
+                    nameandphotoRef.update("login",mEditTextLogin.getText().toString());
+                    nameandphotoRef.update("name",mEditTextName.getText().toString());
+                    nameandphotoRef.update("surname",mEditTextSurname.getText().toString());
+                    nameandphotoRef.update("avatar",mEditTextPhoto.getText().toString());
                 } else {
                     mTextViewProfile.setTextColor(Color.RED);
                     mTextViewProfile.setText(task.getException().getMessage());
@@ -226,6 +240,10 @@ public class ManageUserActivity extends BaseActivity implements View.OnClickList
                 if (task.isSuccessful()) {
                     mTextViewProfile.setTextColor(Color.DKGRAY);
                     mTextViewProfile.setText(getString(R.string.updated, "User email"));
+
+                    DocumentReference updateemailRef = db.collection("Users").document(mAuth.getCurrentUser().getUid());
+
+                    updateemailRef.update("email",mEditTextEmail.getText().toString());
                 } else {
                     mTextViewProfile.setTextColor(Color.RED);
                     mTextViewProfile.setText(task.getException().getMessage());
@@ -244,6 +262,10 @@ public class ManageUserActivity extends BaseActivity implements View.OnClickList
                     if (task.isSuccessful()) {
                         mTextViewProfile.setTextColor(Color.DKGRAY);
                         mTextViewProfile.setText(getString(R.string.updated, "User password"));
+
+                        DocumentReference updatepasswordRef = db.collection("Users").document(mAuth.getCurrentUser().getUid());
+
+                        updatepasswordRef.update("password",mEditTextPassword.getText().toString());
                     } else {
                         mTextViewProfile.setTextColor(Color.RED);
                         mTextViewProfile.setText(task.getException().getMessage());
@@ -279,6 +301,7 @@ public class ManageUserActivity extends BaseActivity implements View.OnClickList
                 if (task.isSuccessful()) {
                     mTextViewProfile.setTextColor(Color.DKGRAY);
                     mTextViewProfile.setText("User account deleted.");
+                    db.collection("Users").document(mAuth.getCurrentUser().getUid()).delete();
                 } else {
                     mTextViewProfile.setTextColor(Color.RED);
                     mTextViewProfile.setText(task.getException().getMessage());

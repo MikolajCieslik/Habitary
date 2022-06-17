@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 
 import com.example.habitary.MainActivity;
 import com.example.habitary.SplashScreen;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
 import androidx.appcompat.app.AlertDialog;
 import android.text.TextUtils;
@@ -29,8 +31,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.io.InputStream;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.example.habitary.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 /*
 - If user is already signed in, it takes him straight to SplashScreen and Toast is displayed.
@@ -44,6 +49,8 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
     private ImageView mImageView;
     private TextView mTextViewProfile;
     private TextInputLayout mLayoutEmail, mLayoutPassword;
+
+    private FirebaseFirestore db;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -62,6 +69,7 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.verify_button).setOnClickListener(this);
 
+        db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -137,6 +145,29 @@ public class EmailPasswordActivity extends BaseActivity implements View.OnClickL
                     mTextViewProfile.setText(task.getException().getMessage());
                 } else {
                     //startActivity(new Intent(EmailPasswordActivity.this,SplashScreen.class)); //On createAccount open SplashScreen
+                    Map<String, Object> user = new HashMap<>();
+                    user.put("accessLevel", null);
+                    user.put("avatar", null);
+                    user.put("email", email);
+                    user.put("login", null);
+                    user.put("name", null);
+                    user.put("password", password);
+                    user.put("surname", null);
+
+                    db.collection("Users").document(mAuth.getCurrentUser().getUid())
+                            .set(user)
+                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    Log.d(TAG, "DocumentSnapshot successfully written!");
+                                                }
+                                            })
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.w(TAG, "Error writing document", e);
+                                                }
+                                            });
                     mTextViewProfile.setTextColor(Color.DKGRAY);
                 }
                 hideProgressDialog();
