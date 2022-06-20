@@ -19,7 +19,7 @@ public class PomodoroFragment extends Fragment {
     Button btnStartPom;
 
     long t;
-    long countDownValue = 5000; // 25 minut
+    long countDownValue = 15000; // 25 minut
     long breakValue = 300000; // 5 minut
     short counterOfBreaks;
     boolean timerRunning;

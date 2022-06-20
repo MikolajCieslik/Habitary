@@ -2,7 +2,9 @@ package com.example.habitary;
 
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
@@ -97,7 +100,7 @@ public class CreateHabitActivity extends AppCompatActivity {
         tbSunday = findViewById(R.id.tbSunday);
 
         alertHour2 = hour;
-        alertMinute2 = minute+30;
+        alertMinute2 = minute;
         tvAlertTime2.setText(String.format( "%02d",alertHour2)+":"+String.format("%02d",alertMinute2));
 
         tvAlertTime2.setOnClickListener(new View.OnClickListener() {
@@ -125,70 +128,108 @@ public class CreateHabitActivity extends AppCompatActivity {
         tbMonday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tbMonday.isChecked()) { if (!frequency.contains("Monday")){ frequency.add("Monday"); }}
-                else { if (frequency.contains("Monday")) { frequency.remove("Monday"); }}
+                if (tbMonday.isChecked()) { if (!frequency.contains("Monday")){ frequency.add("Monday");
+                    tbMonday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                }}
+                else { if (frequency.contains("Monday")) { frequency.remove("Monday");
+                    tbMonday.setBackgroundColor(Color.parseColor("#6600EE"));
+                }}
             }
         });
 
         tbTuesday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tbTuesday.isChecked()) { if (!frequency.contains("Tuesday")){ frequency.add("Tuesday"); }}
-                else { if (frequency.contains("Tuesday")) { frequency.remove("Tuesday"); }}
+                if (tbTuesday.isChecked()) { if (!frequency.contains("Tuesday")){ frequency.add("Tuesday");
+                    tbTuesday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                }}
+                else { if (frequency.contains("Tuesday")) { frequency.remove("Tuesday");
+                    tbTuesday.setBackgroundColor(Color.parseColor("#6600EE"));
+                }}
             }
         });
 
         tbWednesday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tbWednesday.isChecked()) {if (!frequency.contains("Wednesday")){ frequency.add("Wednesday"); }}
-                else { if (frequency.contains("Wednesday")) { frequency.remove("Wednesday"); }}
+                if (tbWednesday.isChecked()) {if (!frequency.contains("Wednesday")){ frequency.add("Wednesday");
+                    tbWednesday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                }}
+                else { if (frequency.contains("Wednesday")) { frequency.remove("Wednesday");
+                    tbWednesday.setBackgroundColor(Color.parseColor("#6600EE"));
+                }}
             }
         });
         tbThursday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tbThursday.isChecked()) { if (!frequency.contains("Thursday")){ frequency.add("Thursday"); }}
-                else { if (frequency.contains("Thursday")) { frequency.remove("Thursday"); }}
+                if (tbThursday.isChecked()) { if (!frequency.contains("Thursday")){ frequency.add("Thursday");
+                    tbThursday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                }}
+                else { if (frequency.contains("Thursday")) { frequency.remove("Thursday");
+                    tbThursday.setBackgroundColor(Color.parseColor("#6600EE"));
+                }}
             }
         });
         tbFriday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tbFriday.isChecked()) { if (!frequency.contains("Friday")){ frequency.add("Friday"); }}
-                else { if (frequency.contains("Friday")) { frequency.remove("Friday"); }}
+                if (tbFriday.isChecked()) { if (!frequency.contains("Friday")){ frequency.add("Friday");
+                    tbFriday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                }}
+                else { if (frequency.contains("Friday")) { frequency.remove("Friday");
+                    tbFriday.setBackgroundColor(Color.parseColor("#6600EE"));
+                }}
             }
         });
         tbSaturday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tbSaturday.isChecked()) { if (!frequency.contains("Saturday")){ frequency.add("Saturday"); }}
-                else { if (frequency.contains("Saturday")) { frequency.remove("Saturday"); }}
+                if (tbSaturday.isChecked()) { if (!frequency.contains("Saturday")){ frequency.add("Saturday");
+                    tbSaturday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                }}
+                else { if (frequency.contains("Saturday")) { frequency.remove("Saturday");
+                    tbSaturday.setBackgroundColor(Color.parseColor("#6600EE"));
+                }}
             }
         });
         tbSunday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (tbSunday.isChecked()) { if (!frequency.contains("Sunday")){ frequency.add("Sunday"); }}
-                else { if (frequency.contains("Sunday")) { frequency.remove("Sunday"); }}
+                if (tbSunday.isChecked()) { if (!frequency.contains("Sunday")){ frequency.add("Sunday");
+                    tbSunday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                }}
+                else { if (frequency.contains("Sunday")) { frequency.remove("Sunday");
+                    tbSaturday.setBackgroundColor(Color.parseColor("#6600EE"));
+                }}
             }
         });
 
         tvSave2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Poprawić wprowadzanie daty
                 String aDate = String.format("%02d", alertHour2) + ":" + String.format("%02d", alertMinute2)+"Z"+timeZone;
                 DateFormat format = new SimpleDateFormat("HH:mm'Z'");
+
                 try {
+                    if (frequency.size() == 0) {
+                        throw new NullPointerException("You need at least 1 day of habit");
+                    }
+                    if(TextUtils.isEmpty(etHabitName.getText().toString())) {
+                        throw new NullPointerException("Habit Name can not be null");
+                    }
+
                     Date date = (Date)format.parse(aDate);
                     Timestamp alertHour2 = new Timestamp(date);
                     Habit habit = new Habit(String.valueOf(etHabitName.getText()), String.valueOf(etDescriptionHabit.getText()), frequency, alertHour2,"userLefik");
                     db.collection("Habits").document().set(habit);
                 } catch (ParseException e) {
                     e.printStackTrace();
-                    Log.d("blond", "Nie wyslalo sie");
+                    Log.d("Err", "Not pushed to the database");
+                } catch (NullPointerException e) {
+                    Toast.makeText(CreateHabitActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
     }

@@ -13,6 +13,9 @@
         android:text="Tuesday"
         android:textOff="Tuesday"
         android:textOn="Tuesday"
+        android:background="?attr/colorPrimary"
+        android:textColor="@color/white"
+
         app:layout_constraintStart_toEndOf="@+id/tbMonday"
         app:layout_constraintTop_toTopOf="@+id/tbMonday" />
 
@@ -25,6 +28,8 @@
         android:text="Sunday"
         android:textOff="Sunday"
         android:textOn="Sunday"
+        android:background="?attr/colorPrimary"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/tbSaturday"
         app:layout_constraintTop_toBottomOf="@+id/tbThursday" />
 
@@ -37,26 +42,30 @@
         android:text="Saturday"
         android:textOff="Saturday"
         android:textOn="Saturday"
+        android:background="?attr/colorPrimary"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/tbSunday"
         app:layout_constraintTop_toBottomOf="@+id/tbTuesday" />
 
     <TextView
         android:id="@+id/tvAlertTime2"
-        android:layout_width="107dp"
-        android:layout_height="18dp"
+        android:layout_width="114dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="236dp"
-        android:layout_marginEnd="160dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tvAlertDate2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvAlertDate2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="72dp"
         android:layout_marginTop="236dp"
         android:text="Alert time"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -98,19 +107,20 @@
         android:id="@+id/tvDescriptionHabit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="48dp"
-        android:text="TextView"
+        android:text="Habit Description"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAlertDate2" />
 
     <EditText
         android:id="@+id/etDescriptionHabit"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="34dp"
-        android:ems="10"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:ems="0"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toEndOf="@+id/tvDescriptionHabit"
@@ -119,21 +129,22 @@
 
     <TextView
         android:id="@+id/tvHabitName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="66dp"
-        android:text="TextView"
+        android:layout_width="110dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="64dp"
+        android:text="Habit Name"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar2" />
 
     <EditText
         android:id="@+id/etHabitName"
-        android:layout_width="wrap_content"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="56dp"
-        android:ems="10"
+        android:ems="0"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintStart_toEndOf="@+id/tvHabitName"
@@ -150,6 +161,8 @@
         android:text="Monday"
         android:textOff="Monday"
         android:textOn="Monday"
+        android:background="?attr/colorPrimary"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescriptionHabit" />
 
@@ -174,6 +187,8 @@
         android:text="Friday"
         android:textOff="Friday"
         android:textOn="Friday"
+        android:background="?attr/colorPrimary"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/tbSaturday"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbTuesday" />
@@ -186,6 +201,8 @@
         android:text="Thursday"
         android:textOff="Thursday"
         android:textOn="Thursday"
+        android:background="?attr/colorPrimary"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/tbWednesday"
         app:layout_constraintTop_toTopOf="@+id/tbWednesday" />
 
@@ -197,6 +214,8 @@
         android:text="Wednesday"
         android:textOff="Wednesday"
         android:textOn="Wednesday"
+        android:background="?attr/colorPrimary"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/tbTuesday"
         app:layout_constraintTop_toTopOf="@+id/tbTuesday" />
 
