@@ -1,6 +1,7 @@
 package com.example.habitary.model;
 
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,19 +13,19 @@ public class Habit {
     Integer streakCounter;
     Boolean finishFlag;
     Timestamp alertDate;
-    String idUser;//nie wiem czy potrzebne
+    DocumentReference userID;//nie wiem czy potrzebne
 
     public Habit(){
     }
 
-    public Habit(String name, String description, ArrayList<String> frequency, Timestamp alertDate, String idUser){
+    public Habit(String name, String description, ArrayList<String> frequency, Timestamp alertDate, DocumentReference userID){
         this.name = name;
         this.description = description;
         this.frequency = frequency;
         this.streakCounter = 0;
         this.finishFlag = false;
         this.alertDate = alertDate;
-        this.idUser = idUser;
+        this.userID = userID;
     }
 
     public String getName() {
@@ -51,8 +52,8 @@ public class Habit {
         return alertDate;
     }
 
-    public String getIdUser() {
-        return idUser;
+    public DocumentReference getUserID() {
+        return userID;
     }
 
     public void setName(String name) {
@@ -79,7 +80,7 @@ public class Habit {
         this.alertDate = alertDate;
     }
 
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
+    public void setUserID(DocumentReference userID) {
+        this.userID = userID;
     }
 }
