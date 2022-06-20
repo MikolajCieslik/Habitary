@@ -9,24 +9,69 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Habitary">
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
         <activity
-            android:name=".CreateTaskActivity"
+            android:name=".authentication.TwitterLoginActivity"
+            android:exported="false" />
+            android:label="@string/label_twitter_login"/>
+
+        <activity
+            android:name=".authentication.PhoneAuthActivity"
+            android:exported="false" />
+            android:label="@string/label_phone_auth"/>
+        <activity
+            android:name=".authentication.ManageUserActivity"
+            android:exported="false" />
+            android:label="@string/label_manage_user"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity
+            android:name=".authentication.GoogleSignInActivity"
+            android:exported="false" />
+            android:label="@string/label_google_sign_in"/>
+        <activity
+            android:name=".authentication.FacebookLoginActivity"
+            android:exported="false" />
+            android:label="@string/label_facebook_login"/>
+        <activity
+            android:name=".authentication.EmailPasswordActivity"
+            android:exported="true" >
+            android:label="@string/label_emailpassword"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+        <activity
+            android:name=".authentication.BaseActivity"
             android:exported="false" />
         <activity
             android:name=".CreateHabitActivity"
             android:exported="false" />
         <activity
+            android:name=".authentication.AnonymousAuthActivity"
+            android:exported="false" />
+            android:label="@string/label_anonymous_auth"/>
+        <activity
+            android:name=".LauncherActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".CreateTaskActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreen"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

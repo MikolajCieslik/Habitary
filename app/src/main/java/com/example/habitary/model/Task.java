@@ -1,13 +1,14 @@
 package com.example.habitary.model;
 
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentReference;
 
 public class Task {
 
     String name;
     String category;
     String description;
-    String idUser;//nie wiem czy potrzebne
+    DocumentReference userID;
     Boolean finishFlag;
     Timestamp startDate;
     Timestamp alertDate;
@@ -16,11 +17,11 @@ public class Task {
     public Task(){
     }
 
-    public Task(String name, String category, String description, String idUser, Timestamp startDate, Timestamp alertDate, Timestamp endDate){
+    public Task(String name, String category, String description, DocumentReference idUser, Timestamp startDate, Timestamp alertDate, Timestamp endDate){
         this.name = name;
         this.category = category;
         this.description = description;
-        this.idUser = idUser;
+        this.userID = idUser;
         this.finishFlag = false;
         this.startDate = startDate;
         this.alertDate = alertDate;
@@ -39,8 +40,8 @@ public class Task {
         return description;
     }
 
-    public String getIdUser() {
-        return idUser;
+    public DocumentReference getUserID() {
+        return userID;
     }
 
     public Boolean getFinishFlag() {
@@ -71,8 +72,8 @@ public class Task {
         this.description = description;
     }
 
-    public void setIdUser(String idUser) {
-        this.idUser = idUser;
+    public void setUserID(DocumentReference userID) {
+        this.userID = userID;
     }
 
     public void setFinishFlag(Boolean finishFlag) {

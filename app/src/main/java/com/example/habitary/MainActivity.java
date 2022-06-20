@@ -18,6 +18,8 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.habitary.authentication.EmailPasswordActivity;
+import com.example.habitary.authentication.ManageUserActivity;
 import com.example.habitary.fragment.CreateTaskFragment;
 import com.example.habitary.fragment.PomodoroFragment;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
             transaction.replace(R.id.container, dashBoardFragment);
         }
         else if (position == POS_SETTINGS){
-            finish();
+            startActivity(new Intent(MainActivity.this, ManageUserActivity.class));
         }
 
         slidingRootNav.closeMenu();

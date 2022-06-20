@@ -6,21 +6,17 @@ public class User {
     String surname;
     String login;
     String email;
-    String password;
     String avatar;
-    Short accessLevel;
 
     public User(){
     }
 
-    public User(String name, String surname, String login, String email, String password, String avatar){
+    public User(String name, String surname, String login, String email, String avatar){
         this.name = name;
         this.surname = surname;
         this.login = login;
         this.email = email;
-        this.password = password;
         this.avatar = avatar;
-        this.accessLevel = 1;
     }
 
     public String getName() {
@@ -39,16 +35,8 @@ public class User {
         return email;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public String getAvatar() {
         return avatar;
-    }
-
-    public Short getAccessLevel() {
-        return accessLevel;
     }
 
     public void setName(String name) {
@@ -67,16 +55,8 @@ public class User {
         this.email = email;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 
-    //nie wiem czy konieczne
-    public void setAccessLevel(Short accessLevel) {
-        this.accessLevel = accessLevel;
-    }
 }

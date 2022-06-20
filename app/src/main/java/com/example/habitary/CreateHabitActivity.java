@@ -22,6 +22,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.habitary.model.Habit;
 import com.google.android.material.timepicker.TimeFormat;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.sql.Time;
@@ -72,6 +75,8 @@ public class CreateHabitActivity extends AppCompatActivity {
 
 
     FirebaseFirestore db;
+    FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +84,9 @@ public class CreateHabitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_habit);
         db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = mAuth.getCurrentUser();
+
         tvBack2 = findViewById(R.id.tvBack2);
         tvSave2 = findViewById(R.id.tvSave2);
 
@@ -210,6 +218,7 @@ public class CreateHabitActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String aDate = String.format("%02d", alertHour2) + ":" + String.format("%02d", alertMinute2)+"Z"+timeZone;
                 DateFormat format = new SimpleDateFormat("HH:mm'Z'");
+                DocumentReference documentReference = db.document("Users/"+user.getUid());
 
                 try {
                     if (frequency.size() == 0) {
@@ -221,8 +230,10 @@ public class CreateHabitActivity extends AppCompatActivity {
 
                     Date date = (Date)format.parse(aDate);
                     Timestamp alertHour2 = new Timestamp(date);
-                    Habit habit = new Habit(String.valueOf(etHabitName.getText()), String.valueOf(etDescriptionHabit.getText()), frequency, alertHour2,"userLefik");
+                    Habit habit = new Habit(String.valueOf(etHabitName.getText()), String.valueOf(etDescriptionHabit.getText()), frequency, alertHour2, documentReference);
                     db.collection("Habits").document().set(habit);
+                    Intent intent = new Intent(view.getContext(),MainActivity.class);
+                    startActivity(intent);
                 } catch (ParseException e) {
                     e.printStackTrace();
                     Log.d("Err", "Not pushed to the database");
