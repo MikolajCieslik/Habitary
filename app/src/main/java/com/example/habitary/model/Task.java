@@ -8,7 +8,7 @@ public class Task {
     String name;
     String category;
     String description;
-    DocumentReference userID;
+    DocumentReference idUser;
     Boolean finishFlag;
     Timestamp startDate;
     Timestamp alertDate;
@@ -21,7 +21,7 @@ public class Task {
         this.name = name;
         this.category = category;
         this.description = description;
-        this.userID = idUser;
+        this.idUser = idUser;
         this.finishFlag = false;
         this.startDate = startDate;
         this.alertDate = alertDate;
@@ -40,8 +40,8 @@ public class Task {
         return description;
     }
 
-    public DocumentReference getUserID() {
-        return userID;
+    public DocumentReference getIdUser() {
+        return idUser;
     }
 
     public Boolean getFinishFlag() {
@@ -72,8 +72,8 @@ public class Task {
         this.description = description;
     }
 
-    public void setUserID(DocumentReference userID) {
-        this.userID = userID;
+    public void setIdUser(DocumentReference idUser) {
+        this.idUser = idUser;
     }
 
     public void setFinishFlag(Boolean finishFlag) {

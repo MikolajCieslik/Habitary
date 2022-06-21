@@ -13,7 +13,7 @@ public class Habit {
     Integer streakCounter;
     Boolean finishFlag;
     Timestamp alertDate;
-    DocumentReference userID;//nie wiem czy potrzebne
+    DocumentReference idUser;//nie wiem czy potrzebne
 
     public Habit(){
     }
@@ -25,7 +25,7 @@ public class Habit {
         this.streakCounter = 0;
         this.finishFlag = false;
         this.alertDate = alertDate;
-        this.userID = userID;
+        this.idUser = userID;
     }
 
     public String getName() {
@@ -52,8 +52,8 @@ public class Habit {
         return alertDate;
     }
 
-    public DocumentReference getUserID() {
-        return userID;
+    public DocumentReference getIdUser() {
+        return idUser;
     }
 
     public void setName(String name) {
@@ -80,7 +80,7 @@ public class Habit {
         this.alertDate = alertDate;
     }
 
-    public void setUserID(DocumentReference userID) {
-        this.userID = userID;
+    public void setIdUser(DocumentReference idUser) {
+        this.idUser = idUser;
     }
 }
