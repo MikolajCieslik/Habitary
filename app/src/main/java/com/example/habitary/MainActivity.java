@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.ColorInt;
@@ -22,8 +23,10 @@ import com.example.habitary.authentication.EmailPasswordActivity;
 import com.example.habitary.authentication.ManageUserActivity;
 import com.example.habitary.fragment.CreateTaskFragment;
 import com.example.habitary.fragment.PomodoroFragment;
+import com.example.habitary.model.Task;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.yarolegovich.slidingrootnav.SlidingRootNav;
 import com.yarolegovich.slidingrootnav.SlidingRootNavBuilder;
@@ -33,6 +36,7 @@ import com.example.habitary.menu.SimpleItem;
 import com.example.habitary.menu.SpaceItem;
 import com.example.habitary.fragment.CenteredTextFragment;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener {
@@ -50,6 +54,11 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private SlidingRootNav slidingRootNav;
 
     FirebaseFirestore db;
+
+    RecyclerView rv;
+    ArrayList<Task> taskArrayList;
+    TaskRVAdapter taskAdapter;
+    public static final String COLLECTION = "Tasks";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -89,6 +98,40 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
         db = FirebaseFirestore.getInstance();
 
+        rv = findViewById(R.id.rvTasks);
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+
+        taskArrayList = new ArrayList<>();
+        taskAdapter = new TaskRVAdapter(MainActivity.this, taskArrayList);
+
+        rv.setAdapter(taskAdapter);
+
+        EventChangeListener();
+
+    }
+
+    private void EventChangeListener() {
+
+        db.collection(COLLECTION)
+                .addSnapshotListener((value, error) -> {
+
+                    if (error != null) {
+                        Log.e("Firestore fail", error.getMessage());
+                        return;
+                    }
+                    assert value != null;
+                    for (DocumentChange dc : value.getDocumentChanges()) {
+                        if (dc.getType() == DocumentChange.Type.ADDED) {
+
+                            taskArrayList.add(dc.getDocument().toObject(Task.class));
+                        }
+
+                        taskAdapter.notifyDataSetChanged();
+
+                    }
+
+                });
     }
 
     @Override
