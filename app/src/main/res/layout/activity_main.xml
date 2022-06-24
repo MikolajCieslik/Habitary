@@ -60,14 +60,16 @@
             app:srcCompat="@android:drawable/ic_input_add"
             tools:ignore="SpeakableTextPresentCheck" />-->
 
-        <androidx.recyclerview.widget.RecyclerView
+        <!--     //MyTasks -> moved to fragment//   -->
+        <!--
+            <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTasks"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:layout_conversion_absoluteHeight="731dp"
             tools:layout_conversion_absoluteWidth="411dp"
             tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteY="0dp" />-->
     </FrameLayout>
 
 

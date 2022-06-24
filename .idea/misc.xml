@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Programming/Habitary/app/src/main/res/layout/fragment_blank.xml" value="0.24547101449275363" />
+        <entry key="..\:/Programming/Habitary/app/src/main/res/layout/fragment_create_task.xml" value="0.24547101449275363" />
+        <entry key="..\:/Programming/Habitary/app/src/main/res/layout/fragment_my_tasks.xml" value="0.24547101449275363" />
+        <entry key="..\:/Programming/Habitary/app/src/main/res/layout/fragment_tasks.xml" value="0.18510928961748635" />
+        <entry key="..\:/Programming/Habitary/app/src/main/res/layout/pomodoro_timer.xml" value="0.24547101449275363" />
+        <entry key="..\:/Programming/Habitary/app/src/main/res/layout/tasks_rv.xml" value="0.21195652173913043" />
         <entry key="..\:/Users/bgajd/AndroidStudioProjects/Habitary2/app/src/main/res/layout/activity_anonymous_auth.xml" value="0.22735507246376813" />
         <entry key="..\:/Users/bgajd/AndroidStudioProjects/Habitary2/app/src/main/res/layout/activity_emailpassword.xml" value="0.22735507246376813" />
         <entry key="..\:/Users/bgajd/AndroidStudioProjects/Habitary2/app/src/main/res/layout/activity_facebook.xml" value="0.22735507246376813" />

@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.habitary.authentication.EmailPasswordActivity;
 import com.example.habitary.authentication.ManageUserActivity;
 import com.example.habitary.fragment.CreateTaskFragment;
+import com.example.habitary.fragment.MyTasksFragment;
 import com.example.habitary.fragment.PomodoroFragment;
 import com.example.habitary.model.Task;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
@@ -55,10 +56,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
     FirebaseFirestore db;
 
-    RecyclerView rv;
-    ArrayList<Task> taskArrayList;
-    TaskRVAdapter taskAdapter;
-    public static final String COLLECTION = "Tasks";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -96,42 +94,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
         adapter.setSelected(POS_HOME);
 
-        db = FirebaseFirestore.getInstance();
 
-        rv = findViewById(R.id.rvTasks);
-        rv.setHasFixedSize(true);
-        rv.setLayoutManager(new LinearLayoutManager(this));
-
-        taskArrayList = new ArrayList<>();
-        taskAdapter = new TaskRVAdapter(MainActivity.this, taskArrayList);
-
-        rv.setAdapter(taskAdapter);
-
-        EventChangeListener();
-
-    }
-
-    private void EventChangeListener() {
-
-        db.collection(COLLECTION)
-                .addSnapshotListener((value, error) -> {
-
-                    if (error != null) {
-                        Log.e("Firestore fail", error.getMessage());
-                        return;
-                    }
-                    assert value != null;
-                    for (DocumentChange dc : value.getDocumentChanges()) {
-                        if (dc.getType() == DocumentChange.Type.ADDED) {
-
-                            taskArrayList.add(dc.getDocument().toObject(Task.class));
-                        }
-
-                        taskAdapter.notifyDataSetChanged();
-
-                    }
-
-                });
     }
 
     @Override
@@ -144,9 +107,9 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new CenteredTextFragment()).commit();
         }
         else if (position == POS_TASKS){
-            //CreateTaskFragment createTaskFragment = new CreateTaskFragment();
-            //transaction.replace(R.id.container, createTaskFragment);
-            //getSupportFragmentManager().beginTransaction().replace(R.id.container, new CreateTaskFragment()).commit();
+            MyTasksFragment myTasksFragment = new MyTasksFragment();
+            transaction.replace(R.id.container, myTasksFragment);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new MyTasksFragment()).commit();
         }
         else if (position == POS_HABITS){
             CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
