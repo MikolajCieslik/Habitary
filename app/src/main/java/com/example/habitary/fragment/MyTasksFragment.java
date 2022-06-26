@@ -1,5 +1,7 @@
 package com.example.habitary.fragment;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,7 +20,10 @@ import com.example.habitary.MainActivity;
 import com.example.habitary.R;
 import com.example.habitary.TaskRVAdapter;
 import com.example.habitary.model.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -27,6 +32,7 @@ import java.util.ArrayList;
 public class MyTasksFragment extends Fragment {
 
     FirebaseFirestore db;
+    FirebaseAuth mAuth;
 
     RecyclerView rv;
     ArrayList<Task> taskArrayList;
@@ -42,6 +48,8 @@ public class MyTasksFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
 
         View rootView = inflater.inflate(R.layout.fragment_my_tasks, container, false);
         rv = (RecyclerView) rootView.findViewById(R.id.rvTasks);
@@ -49,6 +57,7 @@ public class MyTasksFragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
         taskArrayList = new ArrayList<>();
         taskAdapter = new TaskRVAdapter(getActivity(), taskArrayList);
+
 
         rv.setAdapter(taskAdapter);
 
@@ -64,6 +73,8 @@ public class MyTasksFragment extends Fragment {
 
     private void EventChangeListener() {
 
+        final FirebaseUser user = mAuth.getCurrentUser();
+
         db.collection(COLLECTION)
                 .addSnapshotListener((value, error) -> {
 
@@ -74,8 +85,10 @@ public class MyTasksFragment extends Fragment {
                     assert value != null;
                     for (DocumentChange dc : value.getDocumentChanges()) {
                         if (dc.getType() == DocumentChange.Type.ADDED) {
-
-                            taskArrayList.add(dc.getDocument().toObject(Task.class));
+                            DocumentReference documentReference = (DocumentReference) dc.getDocument().get("idUser");
+                            if(documentReference.getPath().equals("Users/"+user.getUid())){
+                                taskArrayList.add(dc.getDocument().toObject(Task.class));
+                            }
                         }
 
                         taskAdapter.notifyDataSetChanged();
@@ -85,3 +98,4 @@ public class MyTasksFragment extends Fragment {
                 });
     }
 }
+
