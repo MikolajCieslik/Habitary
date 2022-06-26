@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.habitary.authentication.EmailPasswordActivity;
 import com.example.habitary.authentication.ManageUserActivity;
 import com.example.habitary.fragment.CreateTaskFragment;
+import com.example.habitary.fragment.HabitsFragment;
 import com.example.habitary.fragment.MyTasksFragment;
 import com.example.habitary.fragment.PomodoroFragment;
 import com.example.habitary.model.Task;
@@ -112,8 +113,9 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new MyTasksFragment()).commit();
         }
         else if (position == POS_HABITS){
-            CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
-            transaction.replace(R.id.container, dashBoardFragment);
+            HabitsFragment habitsFragment = new HabitsFragment();
+            transaction.replace(R.id.container, habitsFragment);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new HabitsFragment()).commit();
         }
         else if (position == POS_POMODORO){
             /*PomodoroFragment pomodoroFragment = new PomodoroFragment();
