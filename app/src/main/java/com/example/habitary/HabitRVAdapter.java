@@ -1,6 +1,9 @@
 package com.example.habitary;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,7 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
 
     Context context;
     ArrayList<Habit> habitArrayList;
+    FirebaseFirestore firestore;
 
     public HabitRVAdapter(Context context, ArrayList<Habit> habitArrayList) {
         this.context = context;
@@ -31,6 +35,7 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
     public HabitRVAdapter.ViewTaskHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View view = LayoutInflater.from(context).inflate(R.layout.each_habit,parent,false);
+        firestore = FirebaseFirestore.getInstance();
         return new ViewTaskHolder(view);
     }
 
@@ -38,11 +43,23 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
     public void onBindViewHolder(@NonNull HabitRVAdapter.ViewTaskHolder holder, int position) {
 
         Habit habit = habitArrayList.get(position);
-
+        
         holder.habitName.setText(habit.getName());
         holder.description.setText(habit.getDescription());
         holder.habitName.setChecked(habit.getFinishFlag());
 
+        holder.habitName.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b){
+                    firestore.collection("Habits").document(habit.HabitsId).update("finishFlag", true);
+                    Log.d(TAG, "true" );
+                }else {
+                    firestore.collection("Habits").document(habit.HabitsId).update("finishFlag", false);
+                    Log.d(TAG, "false" );
+                }
+            }
+        });
     }
 
     @Override

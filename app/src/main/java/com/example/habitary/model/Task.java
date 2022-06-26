@@ -3,7 +3,7 @@ package com.example.habitary.model;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 
-public class Task {
+public class Task extends TasksId {
 
     String name;
     String category;

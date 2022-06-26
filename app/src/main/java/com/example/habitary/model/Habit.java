@@ -6,7 +6,7 @@ import com.google.firebase.firestore.DocumentReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Habit {
+public class Habit extends HabitsId{
     String name;
     String description;
     ArrayList<String> frequency;
