@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.habitary.HelperTask;
 import com.example.habitary.MainActivity;
 import com.example.habitary.R;
 import com.example.habitary.TaskRVAdapter;
@@ -60,7 +62,8 @@ public class MyTasksFragment extends Fragment {
 
 
         rv.setAdapter(taskAdapter);
-
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new HelperTask(taskAdapter));
+        itemTouchHelper.attachToRecyclerView(rv);
         EventChangeListener();
 
         return rootView;

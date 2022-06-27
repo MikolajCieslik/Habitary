@@ -42,6 +42,10 @@ public class TaskRVAdapter extends RecyclerView.Adapter<TaskRVAdapter.ViewTaskHo
         return new ViewTaskHolder(view);
     }
 
+    public Context getContext(){
+        return context;
+    }
+
     public void deleteTask(int position)
     {
         Task task = taskArrayList.get(position);
@@ -63,18 +67,6 @@ public class TaskRVAdapter extends RecyclerView.Adapter<TaskRVAdapter.ViewTaskHo
         holder.startDate.setText(timeFormat.format(task.getStartDate().toDate().getTime()));
         holder.endDate.setText(timeFormat.format(task.getEndDate().toDate().getTime()));
         holder.description.setText(task.getDescription());
-        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO:
-                //buguje sie kiedy usuwamy inny obiekt niz ostatni z listy
-                deleteTask(holder.getAdapterPosition());
-                //firestore.collection("Tasks").document(task.TasksId).delete();
-                //notifyItemChanged(position);
-
-
-            }
-        });
 
     }
 
@@ -90,7 +82,6 @@ public class TaskRVAdapter extends RecyclerView.Adapter<TaskRVAdapter.ViewTaskHo
         TextView startDate;
         TextView endDate;
         TextView description;
-        Button deleteButton;
 
         public ViewTaskHolder(@NonNull View itemView) {
             super(itemView);
@@ -99,7 +90,6 @@ public class TaskRVAdapter extends RecyclerView.Adapter<TaskRVAdapter.ViewTaskHo
             startDate = itemView.findViewById(R.id.startDate);
             endDate = itemView.findViewById(R.id.endDate);
             description = itemView.findViewById(R.id.description);
-            deleteButton = itemView.findViewById(R.id.deleteButton);
         }
     }
 }

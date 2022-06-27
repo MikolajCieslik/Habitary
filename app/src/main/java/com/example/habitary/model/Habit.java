@@ -28,6 +28,14 @@ public class Habit extends HabitsId{
         this.idUser = userID;
     }
 
+    public Habit(String name, String description, DocumentReference userID){
+        this.name = name;
+        this.description = description;
+        this.streakCounter = 0;
+        this.finishFlag = false;
+        this.idUser = userID;
+    }
+
     public String getName() {
         return name;
     }

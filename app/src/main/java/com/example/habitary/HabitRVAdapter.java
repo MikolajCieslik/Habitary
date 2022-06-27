@@ -3,6 +3,7 @@ package com.example.habitary;
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.habitary.model.Habit;
@@ -58,9 +60,10 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
         Bundle bundle = new Bundle();
         bundle.putString("name", habit.getName());
         bundle.putString("description", habit.getDescription());
+        bundle.putString("id", habit.HabitsId);
 
-        //EditHabit editHabit = new EditHabit();
-
+        EditHabit editHabit = new EditHabit();
+        editHabit.setArguments(bundle);
     }
 
     public void refHabit(){
@@ -92,6 +95,15 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
                 }
             }
         });
+        holder.imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //editHabit(position);
+                //Intent intent = new Intent(view.getContext(),EditHabit.class);
+               // context.startActivity(intent);
+
+            }
+        });
 
 
 
@@ -106,12 +118,14 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
 
         CheckBox habitName;
         TextView description;
+        ImageButton imageButton;
 
         public ViewTaskHolder(@NonNull View itemView) {
             super(itemView);
 
             habitName = itemView.findViewById(R.id.habitName);
             description = itemView.findViewById(R.id.description);
+            imageButton = itemView.findViewById(R.id.editButton);
         }
     }
 }
