@@ -86,8 +86,9 @@ public class MyTasksFragment extends Fragment {
                     for (DocumentChange dc : value.getDocumentChanges()) {
                         if (dc.getType() == DocumentChange.Type.ADDED) {
                             DocumentReference documentReference = (DocumentReference) dc.getDocument().get("idUser");
+                            String id = dc.getDocument().getId();
                             if(documentReference.getPath().equals("Users/"+user.getUid())){
-                                taskArrayList.add(dc.getDocument().toObject(Task.class));
+                                taskArrayList.add(dc.getDocument().toObject(Task.class).withId(id));
                             }
                         }
 

@@ -3,12 +3,14 @@ package com.example.habitary;
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,21 +40,51 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
         firestore = FirebaseFirestore.getInstance();
         return new ViewTaskHolder(view);
     }
+    public Context getContext(){
+        return context;
+    }
+
+    public void deleteHabit(int position){
+        Habit habit = habitArrayList.get(position);
+        firestore.collection("Habits").document(habit.HabitsId).delete();
+        Log.d(TAG, "delete" );
+        habitArrayList.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void editHabit(int position){
+        Habit habit = habitArrayList.get(position);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("name", habit.getName());
+        bundle.putString("description", habit.getDescription());
+
+        //EditHabit editHabit = new EditHabit();
+
+    }
+
+    public void refHabit(){
+        Habit habit = new Habit();
+        firestore.collection("Habits").document(habit.HabitsId).update("finishFlag", false);
+    }
 
     @Override
     public void onBindViewHolder(@NonNull HabitRVAdapter.ViewTaskHolder holder, int position) {
 
         Habit habit = habitArrayList.get(position);
-        
+
         holder.habitName.setText(habit.getName());
         holder.description.setText(habit.getDescription());
         holder.habitName.setChecked(habit.getFinishFlag());
+
+        int counter = habit.getStreakCounter();
 
         holder.habitName.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b){
                     firestore.collection("Habits").document(habit.HabitsId).update("finishFlag", true);
+                    firestore.collection("Habits").document(habit.HabitsId).update("streakCounter", counter+1);
                     Log.d(TAG, "true" );
                 }else {
                     firestore.collection("Habits").document(habit.HabitsId).update("finishFlag", false);
@@ -60,6 +92,9 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
                 }
             }
         });
+
+
+
     }
 
     @Override

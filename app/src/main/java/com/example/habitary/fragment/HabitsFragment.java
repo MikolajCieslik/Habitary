@@ -7,13 +7,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.habitary.Helper;
 import com.example.habitary.R;
 import com.example.habitary.HabitRVAdapter;
 import com.example.habitary.model.Habit;
@@ -24,6 +27,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 public class HabitsFragment extends Fragment {
@@ -55,8 +59,10 @@ public class HabitsFragment extends Fragment {
         habitAdapter = new HabitRVAdapter(getActivity(), habitArrayList);
 
         rv.setAdapter(habitAdapter);
-
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new Helper(habitAdapter));
+        itemTouchHelper.attachToRecyclerView(rv);
         EventChangeListener();
+
 
         return rootView;
     }
@@ -88,7 +94,7 @@ public class HabitsFragment extends Fragment {
 
                             }
                         }
-                        //Collections.reverse(habitArrayList);
+                        Collections.reverse(habitArrayList);
                     }
 
                 });
