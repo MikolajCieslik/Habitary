@@ -51,7 +51,7 @@ public class TaskRVAdapter extends RecyclerView.Adapter<TaskRVAdapter.ViewTaskHo
         Task task = taskArrayList.get(position);
         firestore.collection("Tasks").document(task.TasksId).delete();
         taskArrayList.remove(position);
-        notifyItemChanged(position);
+        notifyItemRemoved(position);
     }
 
     @Override

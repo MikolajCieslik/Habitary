@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        tools:context=".fragment.MyTasksFragment">
+
+
+        <TextView
+            android:id="@+id/timeView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-medium"
+            android:text="CZAS GONI NAS"
+            android:textColor="@color/purple_700"
+            android:textSize="24sp"
+            android:textStyle="italic" />
+
+        <TextView
+            android:id="@+id/todayTasks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:fontFamily="sans-serif-medium"
+            android:text="Today's tasks"
+            android:textColor="@color/purple_700"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvTaski"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_conversion_absoluteHeight="731dp"
+            tools:layout_conversion_absoluteWidth="411dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/todayHabits"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:fontFamily="sans-serif-medium"
+            android:text="Today's habits"
+            android:textColor="@color/purple_700"
+            android:textSize="18sp"
+            android:textStyle="italic" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvHabitsy"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_conversion_absoluteHeight="731dp"
+            tools:layout_conversion_absoluteWidth="411dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </LinearLayout>
+</ScrollView>

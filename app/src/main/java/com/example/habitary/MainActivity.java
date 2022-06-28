@@ -23,6 +23,7 @@ import com.example.habitary.authentication.EmailPasswordActivity;
 import com.example.habitary.authentication.ManageUserActivity;
 import com.example.habitary.fragment.CreateTaskFragment;
 import com.example.habitary.fragment.HabitsFragment;
+import com.example.habitary.fragment.MainViewFragment;
 import com.example.habitary.fragment.MyTasksFragment;
 import com.example.habitary.fragment.PomodoroFragment;
 import com.example.habitary.model.Task;
@@ -103,19 +104,31 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if (position == POS_HOME){
-            /*CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
-            transaction.replace(R.id.container, dashBoardFragment);*/
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new CenteredTextFragment()).commit();
+            MainViewFragment mainViewFragment = new MainViewFragment();
+            transaction.replace(R.id.container, mainViewFragment);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new MainViewFragment()).commit();
+
+            CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
+            transaction.add(R.id.container, dashBoardFragment);
+            getSupportFragmentManager().beginTransaction().add(R.id.container, new CenteredTextFragment()).commit();
         }
         else if (position == POS_TASKS){
             MyTasksFragment myTasksFragment = new MyTasksFragment();
             transaction.replace(R.id.container, myTasksFragment);
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new MyTasksFragment()).commit();
+
+            CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
+            transaction.add(R.id.container, dashBoardFragment);
+            getSupportFragmentManager().beginTransaction().add(R.id.container, new CenteredTextFragment()).commit();
         }
         else if (position == POS_HABITS){
             HabitsFragment habitsFragment = new HabitsFragment();
             transaction.replace(R.id.container, habitsFragment);
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new HabitsFragment()).commit();
+
+            CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
+            transaction.add(R.id.container, dashBoardFragment);
+            getSupportFragmentManager().beginTransaction().add(R.id.container, new CenteredTextFragment()).commit();
         }
         else if (position == POS_POMODORO){
             /*PomodoroFragment pomodoroFragment = new PomodoroFragment();
@@ -129,6 +142,14 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         }
         else if (position == POS_SETTINGS){
             startActivity(new Intent(MainActivity.this, ManageUserActivity.class));
+        }
+        else
+        {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new CenteredTextFragment()).commit();
+
+            MainViewFragment mainViewFragment = new MainViewFragment();
+            transaction.replace(R.id.container, mainViewFragment);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new MainViewFragment()).commit();
         }
 
         slidingRootNav.closeMenu();
