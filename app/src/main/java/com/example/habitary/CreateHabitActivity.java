@@ -77,6 +77,13 @@ public class CreateHabitActivity extends AppCompatActivity {
     FirebaseFirestore db;
     FirebaseAuth mAuth;
 
+    public void sendData(String name_send, String description_send, String id_send, boolean changing){
+         String name_get = name_send;
+        String description_get = description_send;
+        String id_get = id_send;
+        boolean edit = changing;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

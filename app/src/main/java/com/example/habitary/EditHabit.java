@@ -1,5 +1,7 @@
 package com.example.habitary;
 
+import static android.content.ContentValues.TAG;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -7,6 +9,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -73,6 +76,9 @@ public class EditHabit extends BottomSheetDialogFragment {
             String name_get = bundle.getString("name");
             id_get = bundle.getString("id");
             String description_get = bundle.getString("due");
+            Log.d(TAG, name_get );
+            Log.d(TAG, id_get );
+            Log.d(TAG, description_get );
 
             mHabitName.setText(name_get);
             mHabitDescription.setText(description_get);

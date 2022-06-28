@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.habitary.authentication.ManageUserActivity;
 import com.example.habitary.model.Habit;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -57,13 +58,19 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
     public void editHabit(int position){
         Habit habit = habitArrayList.get(position);
 
-        Bundle bundle = new Bundle();
-        bundle.putString("name", habit.getName());
-        bundle.putString("description", habit.getDescription());
-        bundle.putString("id", habit.HabitsId);
 
-        EditHabit editHabit = new EditHabit();
-        editHabit.setArguments(bundle);
+        String name_send = habit.getName();
+        String description_send = habit.getDescription();
+        String id_send = habit.HabitsId;
+        boolean changing = true;
+        Log.d(TAG, habit.getName() );
+        Log.d(TAG, habit.getDescription() );
+        Log.d(TAG, habit.HabitsId );
+        CreateHabitActivity createHabitActivity = new CreateHabitActivity();
+        createHabitActivity.sendData(name_send, description_send, id_send, changing);
+
+        //EditHabit editHabit = new EditHabit();
+        //editHabit.setArguments(bundle);
     }
 
     public void refHabit(){
@@ -80,6 +87,7 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
         holder.description.setText(habit.getDescription());
         holder.habitName.setChecked(habit.getFinishFlag());
 
+        int position_now = position;
         int counter = habit.getStreakCounter();
 
         holder.habitName.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -98,10 +106,8 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
         holder.imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //editHabit(position);
-                //Intent intent = new Intent(view.getContext(),EditHabit.class);
-               // context.startActivity(intent);
-
+                //editHabit(position_now);
+                //startActivity(new Intent(context, EditHabit.class));
             }
         });
 
