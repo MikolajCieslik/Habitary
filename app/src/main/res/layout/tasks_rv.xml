@@ -138,6 +138,12 @@
             android:layout_gravity="center"
             android:orientation="horizontal"/>
 
-
+        <ImageButton
+            android:id="@+id/editButton2"
+            android:layout_width="106dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:backgroundTint="@color/textColorSecondary"
+            app:srcCompat="@drawable/ic_baseline_edit_24" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -1,5 +1,7 @@
 package com.example.habitary;
 
+import static android.content.ContentValues.TAG;
+
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -77,13 +79,6 @@ public class CreateHabitActivity extends AppCompatActivity {
     FirebaseFirestore db;
     FirebaseAuth mAuth;
 
-    public void sendData(String name_send, String description_send, String id_send, boolean changing){
-         String name_get = name_send;
-        String description_get = description_send;
-        String id_get = id_send;
-        boolean edit = changing;
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,6 +112,28 @@ public class CreateHabitActivity extends AppCompatActivity {
         alertHour2 = hour;
         alertMinute2 = minute;
         tvAlertTime2.setText(String.format( "%02d",alertHour2)+":"+String.format("%02d",alertMinute2));
+        String id_get = "";
+        String name;
+        String description;
+        Timestamp alertDate;
+        boolean changed = false;
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null){
+            if (bundle.getString("id") != null){
+                id_get = bundle.getString("id");
+                name = bundle.getString("name");
+                description = bundle.getString("description");
+                changed = true;
+                Log.d(TAG, id_get );
+                Log.d(TAG, name );
+                Log.d(TAG, description );
+                etHabitName.setText(name);
+                etDescriptionHabit.setText(description);
+
+            }
+        }
+        final String id = id_get;
 
         tvAlertTime2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -220,26 +237,33 @@ public class CreateHabitActivity extends AppCompatActivity {
             }
         });
 
+        boolean finalChanged = changed;
         tvSave2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String aDate = String.format("%02d", alertHour2) + ":" + String.format("%02d", alertMinute2)+"Z"+timeZone;
+
+                String aDate = String.format("%02d", alertHour2) + ":" + String.format("%02d", alertMinute2) + "Z" + timeZone;
                 DateFormat format = new SimpleDateFormat("HH:mm'Z'");
-                DocumentReference documentReference = db.document("Users/"+user.getUid());
+                DocumentReference documentReference = db.document("Users/" + user.getUid());
 
                 try {
                     if (frequency.size() == 0) {
                         throw new NullPointerException("You need at least 1 day of habit");
                     }
-                    if(TextUtils.isEmpty(etHabitName.getText().toString())) {
+                    if (TextUtils.isEmpty(etHabitName.getText().toString())) {
                         throw new NullPointerException("Habit Name can not be null");
                     }
 
-                    Date date = (Date)format.parse(aDate);
+                    Date date = (Date) format.parse(aDate);
                     Timestamp alertHour2 = new Timestamp(date);
                     Habit habit = new Habit(String.valueOf(etHabitName.getText()), String.valueOf(etDescriptionHabit.getText()), frequency, alertHour2, documentReference);
-                    db.collection("Habits").document().set(habit);
-                    Intent intent = new Intent(view.getContext(),MainActivity.class);
+                    if (finalChanged == true){
+                        db.collection("Habits").document(id).delete();
+                        db.collection("Habits").document().set(habit);
+                    }else {
+                        db.collection("Habits").document().set(habit);
+                    }
+                    Intent intent = new Intent(view.getContext(), MainActivity.class);
                     startActivity(intent);
                 } catch (ParseException e) {
                     e.printStackTrace();

@@ -1,5 +1,7 @@
 package com.example.habitary;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +9,7 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -128,6 +131,27 @@ public class CreateTaskActivity extends AppCompatActivity {
         spinnerList.add("Home");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, spinnerList);
         spCategory.setAdapter(adapter);
+        String id_get = "";
+        String name;
+        String description;
+
+        boolean changed = false;
+
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null){
+            if (bundle.getString("id") != null){
+                id_get = bundle.getString("id");
+                name = bundle.getString("name");
+                description = bundle.getString("description");
+                changed = true;
+                etName.setText(name);
+                etDescription.setText(description);
+
+            }
+        }
+        final String id = id_get;
+
+
         categoryReference = db.collection("taskCategory");
         categoryReference.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -261,6 +285,7 @@ public class CreateTaskActivity extends AppCompatActivity {
                 }
             }
         });
+        boolean finalChanged = changed;
         tvSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -283,7 +308,12 @@ public class CreateTaskActivity extends AppCompatActivity {
                         if(cbAddCategory.isChecked()){
                             if(etName.getText().toString().equals("")!=true && etCategory.getText().toString().equals("")!=true && etDescription.getText().toString().equals("")!=true){
                                 Task task = new Task(String.valueOf(etName.getText()), String.valueOf(etCategory.getText()), String.valueOf(etDescription.getText()), documentReference, startDate, alertDate, endDate);
-                                db.collection("Tasks").document().set(task);
+                                if (finalChanged == true ){
+                                    db.collection("Tasks").document(id).delete();
+                                    db.collection("Tasks").document().set(task);
+                                }else {
+                                    db.collection("Tasks").document().set(task);
+                                }
                                 taskCategory taskCategory = new taskCategory(String.valueOf(etCategory.getText()), documentReference);
                                 db.collection("taskCategory").document().set(taskCategory);
                                 Intent intent = new Intent(view.getContext(),MainActivity.class);
@@ -298,7 +328,12 @@ public class CreateTaskActivity extends AppCompatActivity {
                         else{
                             if(etName.getText().toString().equals("")!=true && etDescription.getText().toString().equals("")!=true){
                                 Task task = new Task(String.valueOf(etName.getText()), String.valueOf(spCategory.getSelectedItem()), String.valueOf(etDescription.getText()), documentReference, startDate, alertDate, endDate);
-                                db.collection("Tasks").document().set(task);
+                                if (finalChanged == true ){
+                                    db.collection("Tasks").document(id).delete();
+                                    db.collection("Tasks").document().set(task);
+                                }else {
+                                    db.collection("Tasks").document().set(task);
+                                }
                                 Intent intent = new Intent(view.getContext(),MainActivity.class);
                                 startActivity(intent);
                             }

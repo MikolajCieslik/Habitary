@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.habitary.authentication.ManageUserActivity;
+import com.example.habitary.fragment.HabitsFragment;
 import com.example.habitary.model.Habit;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -41,36 +42,21 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
 
         View view = LayoutInflater.from(context).inflate(R.layout.each_habit,parent,false);
         firestore = FirebaseFirestore.getInstance();
+
+
+
         return new ViewTaskHolder(view);
     }
     public Context getContext(){
         return context;
     }
 
-    public void deleteHabit(int position){
+    public void deleteHabit(int position)
+    {
         Habit habit = habitArrayList.get(position);
         firestore.collection("Habits").document(habit.HabitsId).delete();
-        Log.d(TAG, "delete" );
         habitArrayList.remove(position);
         notifyItemRemoved(position);
-    }
-
-    public void editHabit(int position){
-        Habit habit = habitArrayList.get(position);
-
-
-        String name_send = habit.getName();
-        String description_send = habit.getDescription();
-        String id_send = habit.HabitsId;
-        boolean changing = true;
-        Log.d(TAG, habit.getName() );
-        Log.d(TAG, habit.getDescription() );
-        Log.d(TAG, habit.HabitsId );
-        CreateHabitActivity createHabitActivity = new CreateHabitActivity();
-        createHabitActivity.sendData(name_send, description_send, id_send, changing);
-
-        //EditHabit editHabit = new EditHabit();
-        //editHabit.setArguments(bundle);
     }
 
     public void refHabit(){
@@ -106,8 +92,11 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
         holder.imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //editHabit(position_now);
-                //startActivity(new Intent(context, EditHabit.class));
+                Intent intent = new Intent(view.getContext(), CreateHabitActivity.class);
+                intent.putExtra("id", habit.HabitsId);
+                intent.putExtra("name", habit.getName());
+                intent.putExtra("description", habit.getDescription());
+                context.startActivity(intent);
             }
         });
 

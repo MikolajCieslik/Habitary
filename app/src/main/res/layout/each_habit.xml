@@ -66,6 +66,7 @@
             android:layout_width="106dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:backgroundTint="@color/textColorSecondary"
             app:srcCompat="@drawable/ic_baseline_edit_24" />
 
     </LinearLayout>

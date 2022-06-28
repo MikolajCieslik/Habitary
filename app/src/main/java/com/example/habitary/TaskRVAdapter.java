@@ -3,11 +3,13 @@ package com.example.habitary;
 import static android.content.ContentValues.TAG;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -68,6 +70,17 @@ public class TaskRVAdapter extends RecyclerView.Adapter<TaskRVAdapter.ViewTaskHo
         holder.endDate.setText(timeFormat.format(task.getEndDate().toDate().getTime()));
         holder.description.setText(task.getDescription());
 
+        holder.imageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), CreateTaskActivity.class);
+                intent.putExtra("id", task.TasksId);
+                intent.putExtra("name", task.getName());
+                intent.putExtra("description", task.getDescription());
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -82,6 +95,7 @@ public class TaskRVAdapter extends RecyclerView.Adapter<TaskRVAdapter.ViewTaskHo
         TextView startDate;
         TextView endDate;
         TextView description;
+        ImageButton imageButton2;
 
         public ViewTaskHolder(@NonNull View itemView) {
             super(itemView);
@@ -90,6 +104,7 @@ public class TaskRVAdapter extends RecyclerView.Adapter<TaskRVAdapter.ViewTaskHo
             startDate = itemView.findViewById(R.id.startDate);
             endDate = itemView.findViewById(R.id.endDate);
             description = itemView.findViewById(R.id.description);
+            imageButton2 = itemView.findViewById(R.id.editButton2);
         }
     }
 }
