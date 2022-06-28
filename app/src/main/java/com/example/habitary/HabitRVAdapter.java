@@ -69,12 +69,14 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
 
         Habit habit = habitArrayList.get(position);
 
-        holder.habitName.setText(habit.getName());
-        holder.description.setText(habit.getDescription());
-        holder.habitName.setChecked(habit.getFinishFlag());
-
         int position_now = position;
         int counter = habit.getStreakCounter();
+
+        holder.habitName.setText(habit.getName());
+        holder.description.setText(habit.getDescription());
+        holder.counter_s.setText(String.valueOf(habit.getStreakCounter()));
+        holder.habitName.setChecked(habit.getFinishFlag());
+
 
         holder.habitName.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -113,6 +115,7 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
 
         CheckBox habitName;
         TextView description;
+        TextView counter_s;
         ImageButton imageButton;
 
         public ViewTaskHolder(@NonNull View itemView) {
@@ -120,6 +123,7 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
 
             habitName = itemView.findViewById(R.id.habitName);
             description = itemView.findViewById(R.id.description);
+            counter_s = itemView.findViewById(R.id.counter_s);
             imageButton = itemView.findViewById(R.id.editButton);
         }
     }

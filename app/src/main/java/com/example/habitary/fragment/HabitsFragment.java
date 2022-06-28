@@ -5,6 +5,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,7 +50,9 @@ public class HabitsFragment extends Fragment {
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
+
         View rootView = inflater.inflate(R.layout.fragment_habits, container, false);
+        ImageButton imageButton_re = (ImageButton) rootView.findViewById(R.id.imageButton_ref);
         rv = (RecyclerView) rootView.findViewById(R.id.rvHabits);
         rv.setHasFixedSize(true);
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -59,6 +63,16 @@ public class HabitsFragment extends Fragment {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new Helper(habitAdapter));
         itemTouchHelper.attachToRecyclerView(rv);
         EventChangeListener();
+
+
+
+
+        imageButton_re.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //todo:Sprawić aby każda finishFlag zmieniła się na false i odświeżyć view
+            }
+        });
 
 
         return rootView;
