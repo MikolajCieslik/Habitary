@@ -57,12 +57,12 @@ public class CreateTaskActivity extends AppCompatActivity {
     EditText etDescription;
     Spinner spCategory;
     CheckBox cbAddCategory;
+    TimeZone timeZone = calendar.getTimeZone();
     int year = calendar.get(Calendar.YEAR);
     int month = calendar.get(Calendar.MONTH);
     int day = calendar.get(Calendar.DAY_OF_MONTH);
     int minute = calendar.get(Calendar.MINUTE);
     int hour = calendar.get(Calendar.HOUR_OF_DAY);
-    TimeZone timeZone = calendar.getTimeZone();
     int startHour;
     int startMinute;
     int startYear;
@@ -134,6 +134,13 @@ public class CreateTaskActivity extends AppCompatActivity {
         String id_get = "";
         String name;
         String description;
+        Long startDateStr;
+        Long alertDateStr;
+        Long endDateStr;
+        Timestamp startDate;
+        Timestamp alertDate;
+        Timestamp endDate;
+
 
         boolean changed = false;
 
@@ -143,10 +150,46 @@ public class CreateTaskActivity extends AppCompatActivity {
                 id_get = bundle.getString("id");
                 name = bundle.getString("name");
                 description = bundle.getString("description");
+                startDateStr = bundle.getLong ("startDate");
+                alertDateStr = bundle.getLong ("alertDate");
+                endDateStr = bundle.getLong ("endDate");
+
+                Log.d(TAG, startDateStr.toString());
+                Log.d(TAG, alertDateStr.toString());
+                Log.d(TAG, endDateStr.toString());
+
+                startDate = new Timestamp ((Long)startDateStr,0);
+                alertDate = new Timestamp ((Long)alertDateStr,0);
+                endDate = new Timestamp ((Long)endDateStr,0);
+
+
                 changed = true;
                 etName.setText(name);
                 etDescription.setText(description);
 
+                startDay = startDate.toDate().getDate();
+                startMonth = startDate.toDate().getMonth();
+                startYear = startDate.toDate().getYear()+1900;
+                startHour = startDate.toDate().getHours();
+                startMinute = startDate.toDate().getMinutes();
+                tvStartTime.setText(String.format( "%02d",startHour)+":"+String.format("%02d",startMinute));
+                tvStartDay.setText(String.valueOf(startDay)+"/"+String.valueOf(startMonth)+"/"+String.valueOf(startYear));
+
+                alertDay = alertDate.toDate().getDate();
+                alertMonth = alertDate.toDate().getMonth();
+                alertYear = alertDate.toDate().getYear()+1900;
+                alertHour = alertDate.toDate().getHours();
+                alertMinute = alertDate.toDate().getMinutes();
+                tvAlertTime.setText(String.format( "%02d",alertHour)+":"+String.format("%02d",alertMinute));
+                tvAlertDay.setText(String.valueOf(alertDay)+"/"+String.valueOf(alertMonth)+"/"+String.valueOf(alertYear));
+
+                endDay = endDate.toDate().getDate();
+                endMonth = endDate.toDate().getMonth();
+                endYear = endDate.toDate().getYear()+1900;
+                endHour = endDate.toDate().getHours();
+                endMinute = endDate.toDate().getMinutes();
+                tvEndTime.setText(String.format( "%02d",endHour)+":"+String.format("%02d",endMinute));
+                tvEndDay.setText(String.valueOf(endDay)+"/"+String.valueOf(endMonth)+"/"+String.valueOf(endYear));
             }
         }
         final String id = id_get;

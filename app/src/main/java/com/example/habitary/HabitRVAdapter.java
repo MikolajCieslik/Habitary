@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.example.habitary.fragment.HabitsFragment;
 import com.example.habitary.model.Habit;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTaskHolder> {
@@ -98,6 +100,10 @@ public class HabitRVAdapter extends RecyclerView.Adapter<HabitRVAdapter.ViewTask
                 intent.putExtra("id", habit.HabitsId);
                 intent.putExtra("name", habit.getName());
                 intent.putExtra("description", habit.getDescription());
+                intent.putExtra("alertDate", habit.getAlertDateStr());
+                Bundle extra = new Bundle();
+                extra.putSerializable("frequency_inside", (Serializable) habit.getFrequency());
+                intent.putExtra("frequency",extra);
                 context.startActivity(intent);
             }
         });

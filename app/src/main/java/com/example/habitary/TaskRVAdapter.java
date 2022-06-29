@@ -77,6 +77,9 @@ public class TaskRVAdapter extends RecyclerView.Adapter<TaskRVAdapter.ViewTaskHo
                 intent.putExtra("id", task.TasksId);
                 intent.putExtra("name", task.getName());
                 intent.putExtra("description", task.getDescription());
+                intent.putExtra("startDate", task.getStartDateStr());
+                intent.putExtra("alertDate", task.getAlertDateStr());
+                intent.putExtra("endDate", task.getEndDateStr());
                 context.startActivity(intent);
             }
         });

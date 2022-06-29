@@ -6,6 +6,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -68,12 +69,12 @@ public class CreateHabitActivity extends AppCompatActivity {
 
     ArrayList<String> frequency = new ArrayList<String>();
 
+    TimeZone timeZone = calendar.getTimeZone();
     int minute = calendar.get(Calendar.MINUTE);
     int hour = calendar.get(Calendar.HOUR_OF_DAY);
 
     int alertHour2;
     int alertMinute2;
-    TimeZone timeZone = calendar.getTimeZone();
 
 
     FirebaseFirestore db;
@@ -115,7 +116,8 @@ public class CreateHabitActivity extends AppCompatActivity {
         String id_get = "";
         String name;
         String description;
-        Timestamp alertDate;
+        Long alertDateStr;
+        List <String> freq;
         boolean changed = false;
 
         Bundle bundle = getIntent().getExtras();
@@ -124,13 +126,62 @@ public class CreateHabitActivity extends AppCompatActivity {
                 id_get = bundle.getString("id");
                 name = bundle.getString("name");
                 description = bundle.getString("description");
+                alertDateStr = bundle.getLong ("alertDate");
+                Bundle extra = bundle.getBundle("frequency");
+                freq = (List<String>) extra.getSerializable("frequency_inside");
                 changed = true;
                 Log.d(TAG, id_get );
                 Log.d(TAG, name );
                 Log.d(TAG, description );
+                Log.d(TAG, alertDateStr.toString());
+                Log.d(TAG, String.valueOf(freq));
                 etHabitName.setText(name);
                 etDescriptionHabit.setText(description);
-
+                alertHour2 = (int) (alertDateStr / 3600);
+                alertMinute2 = (int) (alertDateStr - 3600 * alertHour2)/60;
+                tvAlertTime2.setText(String.format( "%02d",alertHour2)+":"+String.format("%02d",alertMinute2));
+                if (freq.contains("Monday"))
+                {
+                    tbMonday.setChecked(true);
+                    tbMonday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                    frequency.add("Monday");
+                }
+                if (freq.contains("Tuesday"))
+                {
+                    tbTuesday.setChecked(true);
+                    tbTuesday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                    frequency.add("Tuesday");
+                }
+                if (freq.contains("Wednesday"))
+                {
+                    tbWednesday.setChecked(true);
+                    tbWednesday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                    frequency.add("Wednesday");
+                }
+                if (freq.contains("Thursday"))
+                {
+                    tbThursday.setChecked(true);
+                    tbThursday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                    frequency.add("Thursday");
+                }
+                if (freq.contains("Friday"))
+                {
+                    tbFriday.setChecked(true);
+                    tbFriday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                    frequency.add("Friday");
+                }
+                if (freq.contains("Saturday"))
+                {
+                    tbSaturday.setChecked(true);
+                    tbSaturday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                    frequency.add("Saturday");
+                }
+                if (freq.contains("Sunday"))
+                {
+                    tbSunday.setChecked(true);
+                    tbSunday.setBackgroundColor(Color.parseColor("#4e02ba"));
+                    frequency.add("Sunday");
+                }
             }
         }
         final String id = id_get;

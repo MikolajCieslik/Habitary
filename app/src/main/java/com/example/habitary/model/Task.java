@@ -52,13 +52,19 @@ public class Task extends TasksId {
         return startDate;
     }
 
+    public Long getStartDateStr() {return startDate.getSeconds(); }
+
     public Timestamp getAlertDate() {
         return alertDate;
     }
 
+    public Long getAlertDateStr() {return alertDate.getSeconds(); }
+
     public Timestamp getEndDate() {
         return endDate;
     }
+
+    public Long getEndDateStr() {return endDate.getSeconds(); }
 
     public void setName(String name) {
         this.name = name;

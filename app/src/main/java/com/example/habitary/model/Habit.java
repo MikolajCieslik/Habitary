@@ -1,5 +1,7 @@
 package com.example.habitary.model;
 
+import android.os.Parcelable;
+
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 
@@ -59,6 +61,8 @@ public class Habit extends HabitsId{
     public Timestamp getAlertDate() {
         return alertDate;
     }
+
+    public Long getAlertDateStr() {return alertDate.getSeconds(); }
 
     public DocumentReference getIdUser() {
         return idUser;
