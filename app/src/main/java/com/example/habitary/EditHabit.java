@@ -102,7 +102,7 @@ public class EditHabit extends BottomSheetDialogFragment {
                     mSaveBtn.setBackgroundColor(Color.GRAY);
                 } else{
                     mSaveBtn.setEnabled(true);
-                    mSaveBtn.setBackgroundColor(getResources().getColor(R.color.style_primary));
+                    mSaveBtn.setBackgroundColor(getResources().getColor(R.color.textColorPrimary));
                 }
             }
 
@@ -118,8 +118,8 @@ public class EditHabit extends BottomSheetDialogFragment {
                 DocumentReference documentReference = firestore.document("Users/"+user.getUid());
                 String name = mHabitName.getText().toString();
                 String description = mHabitDescription.getText().toString();
-                firestore.collection("Habits").document(id_get).update("name", name, "description", description);
-                Toast.makeText(context, "Habit updated", Toast.LENGTH_SHORT).show();
+                    firestore.collection("Habits").document(id_get).update("name", name, "description", description);
+                    Toast.makeText(context, "Habit updated", Toast.LENGTH_SHORT).show();
             }
         });
     }
