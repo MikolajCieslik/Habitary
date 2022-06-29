@@ -10,6 +10,7 @@
         android:id="@+id/rvHabits"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/background_light"
         tools:layout_conversion_absoluteHeight="731dp"
         tools:layout_conversion_absoluteWidth="411dp"
         tools:layout_editor_absoluteX="0dp"
@@ -20,7 +21,7 @@
         android:layout_width="66dp"
         android:layout_height="62dp"
         android:layout_gravity="right"
-        android:backgroundTint="@color/textColorSecondary"
+        android:backgroundTint="@color/style_secondary"
         android:src="@android:drawable/ic_popup_sync"
         tools:ignore="SpeakableTextPresentCheck" />
 
