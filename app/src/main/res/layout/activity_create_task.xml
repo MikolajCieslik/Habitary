@@ -15,7 +15,7 @@
         android:id="@+id/materialToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/textColorSecondary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,6 +29,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:text="@string/name"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar" />
@@ -42,6 +45,8 @@
         android:ems="10"
         android:inputType="text"
         android:minHeight="48dp"
+        android:textColorHighlight="@color/textColorPrimary"
+        android:textColorLink="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -54,6 +59,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="84dp"
         android:text="@string/start_time"
+        android:textColor="@color/textColorPrimary"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
 
@@ -106,6 +113,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="38dp"
         android:text="@string/end_time"
+        android:textColor="@color/textColorPrimary"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAlertDate" />
 
@@ -116,6 +125,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="52dp"
         android:text="@string/category"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
@@ -137,21 +149,22 @@
         android:id="@+id/tvSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
         android:text="@string/save"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/materialToolbar" />
 
     <ImageView
         android:id="@+id/tvBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="51dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_keyboard_arrow_left_24" />
@@ -163,6 +176,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="117dp"
         android:text="@string/description"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
 
@@ -170,13 +186,17 @@
         android:id="@+id/etDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="88dp"
         android:layout_marginEnd="29dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:minHeight="48dp"
+        android:textColorHighlight="@color/textColorPrimary"
+        android:textColorLink="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.923"
+        app:layout_constraintStart_toEndOf="@+id/tvDescription"
         app:layout_constraintTop_toBottomOf="@+id/etCategory"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -187,6 +207,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="56dp"
         android:text="Alert time"
+        android:textColor="@color/textColorPrimary"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvBeginDate" />
 
@@ -228,7 +250,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="94dp"
+        android:buttonTint="@color/textColorPrimary"
         android:text="Add new Category"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etCategory" />
 

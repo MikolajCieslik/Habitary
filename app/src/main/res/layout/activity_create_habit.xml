@@ -9,12 +9,12 @@
         android:id="@+id/tbTuesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
+        android:layout_marginStart="12dp"
+        android:background="@color/textColorSecondary"
         android:text="Tuesday"
+        android:textColor="@color/white"
         android:textOff="Tuesday"
         android:textOn="Tuesday"
-        android:background="?attr/colorPrimary"
-        android:textColor="@color/white"
 
         app:layout_constraintStart_toEndOf="@+id/tbMonday"
         app:layout_constraintTop_toTopOf="@+id/tbMonday" />
@@ -23,13 +23,13 @@
         android:id="@+id/tbSunday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/textColorSecondary"
         android:text="Sunday"
+        android:textColor="@color/white"
         android:textOff="Sunday"
         android:textOn="Sunday"
-        android:background="?attr/colorPrimary"
-        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/tbSaturday"
         app:layout_constraintTop_toBottomOf="@+id/tbThursday" />
 
@@ -38,12 +38,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="9dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/textColorSecondary"
         android:text="Saturday"
+        android:textColor="@color/white"
         android:textOff="Saturday"
         android:textOn="Saturday"
-        android:background="?attr/colorPrimary"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/tbSunday"
         app:layout_constraintTop_toBottomOf="@+id/tbTuesday" />
 
@@ -65,7 +65,9 @@
         android:layout_marginStart="72dp"
         android:layout_marginTop="236dp"
         android:text="Alert time"
+        android:textColor="@color/textColorPrimary"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -73,7 +75,7 @@
         android:id="@+id/materialToolbar2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/textColorSecondary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,21 +86,22 @@
         android:id="@+id/tvSave2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:text="@string/save"
         android:textAllCaps="false"
         android:textColor="#FFFFFF"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/tvBack2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="57dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_baseline_keyboard_arrow_left_24" />
@@ -110,7 +113,9 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="48dp"
         android:text="Habit Description"
+        android:textColor="@color/textColorPrimary"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAlertDate2" />
 
@@ -134,7 +139,9 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="64dp"
         android:text="Habit Name"
+        android:textColor="@color/textColorPrimary"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialToolbar2" />
 
@@ -157,12 +164,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="119dp"
+        android:background="@color/textColorSecondary"
         android:checked="false"
         android:text="Monday"
+        android:textColor="@color/white"
         android:textOff="Monday"
         android:textOn="Monday"
-        android:background="?attr/colorPrimary"
-        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescriptionHabit" />
 
@@ -170,10 +177,12 @@
         android:id="@+id/tvFrequencyHabit"
         android:layout_width="119dp"
         android:layout_height="32dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="148dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="128dp"
         android:text="Frequency"
+        android:textColor="@color/textColorPrimary"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etDescriptionHabit" />
 
@@ -184,12 +193,13 @@
         android:layout_marginStart="65dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="9dp"
+        android:background="@color/textColorSecondary"
         android:text="Friday"
+        android:textColor="@color/white"
         android:textOff="Friday"
         android:textOn="Friday"
-        android:background="?attr/colorPrimary"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/tbSaturday"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbTuesday" />
 
@@ -197,12 +207,12 @@
         android:id="@+id/tbThursday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
+        android:layout_marginStart="12dp"
+        android:background="@color/textColorSecondary"
         android:text="Thursday"
+        android:textColor="@color/white"
         android:textOff="Thursday"
         android:textOn="Thursday"
-        android:background="?attr/colorPrimary"
-        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/tbWednesday"
         app:layout_constraintTop_toTopOf="@+id/tbWednesday" />
 
@@ -210,12 +220,12 @@
         android:id="@+id/tbWednesday"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
+        android:layout_marginStart="20dp"
+        android:background="@color/textColorSecondary"
         android:text="Wednesday"
+        android:textColor="@color/white"
         android:textOff="Wednesday"
         android:textOn="Wednesday"
-        android:background="?attr/colorPrimary"
-        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/tbTuesday"
         app:layout_constraintTop_toTopOf="@+id/tbTuesday" />
 

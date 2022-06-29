@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.habitary.authentication.EmailPasswordActivity;
 import com.example.habitary.authentication.ManageUserActivity;
+import com.example.habitary.fragment.AboutFragment;
 import com.example.habitary.fragment.CreateTaskFragment;
 import com.example.habitary.fragment.HabitsFragment;
 import com.example.habitary.fragment.MainViewFragment;
@@ -137,8 +138,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
         }
         else if (position == POS_ABOUT){
-            CenteredTextFragment dashBoardFragment = new CenteredTextFragment();
-            transaction.replace(R.id.container, dashBoardFragment);
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new AboutFragment()).commit();
         }
         else if (position == POS_SETTINGS){
             startActivity(new Intent(MainActivity.this, ManageUserActivity.class));

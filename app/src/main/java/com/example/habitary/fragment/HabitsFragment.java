@@ -19,11 +19,15 @@ import com.example.habitary.Helper;
 import com.example.habitary.R;
 import com.example.habitary.HabitRVAdapter;
 import com.example.habitary.model.Habit;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -70,7 +74,17 @@ public class HabitsFragment extends Fragment {
         imageButton_re.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //todo:Sprawić aby każda finishFlag zmieniła się na false i odświeżyć view
+                db.collection("Habits").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()){
+                            for(QueryDocumentSnapshot documentSnapshot : task.getResult()){
+                                DocumentReference reference = db.document("Habits/"+documentSnapshot.getId());
+                                reference.update("finishFlag", false);
+                            }
+                        }
+                    }
+                });
             }
         });
 

@@ -22,8 +22,10 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="145dp"
+        android:backgroundTint="@color/textColorSecondary"
         android:clickable="true"
         android:visibility="invisible"
+        app:backgroundTint="@color/textColorPrimary"
         app:srcCompat="@drawable/ic_baseline_add_circle_outline_24"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -34,8 +36,10 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="80dp"
+        android:backgroundTint="@color/textColorSecondary"
         android:clickable="true"
         android:visibility="invisible"
+        app:backgroundTint="@color/textColorPrimary"
         app:srcCompat="@drawable/ic_baseline_add_task_24"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -46,7 +50,9 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/textColorSecondary"
         android:clickable="true"
+        app:backgroundTint="@color/textColorPrimary"
         app:srcCompat="@android:drawable/ic_input_add"
         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -57,7 +63,12 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="90dp"
         android:layout_marginBottom="95dp"
+        android:backgroundTint="@color/textColorPrimary"
+        android:defaultFocusHighlightEnabled="false"
         android:text="Add Task"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:visibility="invisible" />
 
     <TextView
@@ -67,7 +78,13 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="90dp"
         android:layout_marginBottom="165dp"
+        android:backgroundTint="@color/textColorPrimary"
+        android:defaultFocusHighlightEnabled="false"
         android:text="Add Habit"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/textColorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:visibility="invisible" />
 
 </FrameLayout>
