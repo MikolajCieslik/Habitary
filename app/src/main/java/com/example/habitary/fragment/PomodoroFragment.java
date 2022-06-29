@@ -17,6 +17,7 @@ public class PomodoroFragment extends Fragment {
     TextView tvBreak;
     TextView tvTimer;
     Button btnStartPom;
+    Button btnResetPom;
 
     long t;
     long countDownValue = 15000; // 25 minut
@@ -31,6 +32,7 @@ public class PomodoroFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup root = (ViewGroup) inflater.inflate(R.layout.pomodoro_timer, container, false);
         btnStartPom = root.findViewById(R.id.btnStartPom);
+        btnResetPom = root.findViewById(R.id.btnResetPom);
         tvTimer = root.findViewById(R.id.tvTimer);
         tvBreak = root.findViewById(R.id.tvBreak);
         tvBreak.setVisibility(View.INVISIBLE);
@@ -51,6 +53,18 @@ public class PomodoroFragment extends Fragment {
                     btnStartPom.setText("START");
                 }
                 else {
+                    timer(t);
+                }
+            }
+        });
+
+        btnResetPom.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(timerRunning){
+                    t = countDownValue;
+                    counterOfBreaks = 0;
+                    cdTimer.cancel();
                     timer(t);
                 }
             }
