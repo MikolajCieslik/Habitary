@@ -1,11 +1,14 @@
 package com.example.habitary;
 
 import static android.content.ContentValues.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,7 +25,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.habitary.model.Task;
-import com.example.habitary.model.taskCategory;
+import com.example.habitary.model.TaskCategory;
+import com.example.habitary.notification.TaskBroadcast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,12 +61,12 @@ public class CreateTaskActivity extends AppCompatActivity {
     EditText etDescription;
     Spinner spCategory;
     CheckBox cbAddCategory;
-    TimeZone timeZone = calendar.getTimeZone();
     int year = calendar.get(Calendar.YEAR);
     int month = calendar.get(Calendar.MONTH);
     int day = calendar.get(Calendar.DAY_OF_MONTH);
     int minute = calendar.get(Calendar.MINUTE);
     int hour = calendar.get(Calendar.HOUR_OF_DAY);
+    TimeZone timeZone = calendar.getTimeZone();
     int startHour;
     int startMinute;
     int startYear;
@@ -116,6 +120,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         alertMinute = minute+30;
         if(alertMinute>=60){
             alertMinute-=60;
+            alertHour++;
         }
         endYear = year;
         endMonth = month;
@@ -141,7 +146,6 @@ public class CreateTaskActivity extends AppCompatActivity {
         Timestamp alertDate;
         Timestamp endDate;
 
-
         boolean changed = false;
 
         Bundle bundle = getIntent().getExtras();
@@ -153,28 +157,20 @@ public class CreateTaskActivity extends AppCompatActivity {
                 startDateStr = bundle.getLong ("startDate");
                 alertDateStr = bundle.getLong ("alertDate");
                 endDateStr = bundle.getLong ("endDate");
-
                 Log.d(TAG, startDateStr.toString());
                 Log.d(TAG, alertDateStr.toString());
                 Log.d(TAG, endDateStr.toString());
-
                 startDate = new Timestamp ((Long)startDateStr,0);
                 alertDate = new Timestamp ((Long)alertDateStr,0);
                 endDate = new Timestamp ((Long)endDateStr,0);
-
 
                 changed = true;
                 etName.setText(name);
                 etDescription.setText(description);
 
-                startDay = startDate.toDate().getDate();
-                startMonth = startDate.toDate().getMonth();
-                startYear = startDate.toDate().getYear()+1900;
-                startHour = startDate.toDate().getHours();
                 startMinute = startDate.toDate().getMinutes();
                 tvStartTime.setText(String.format( "%02d",startHour)+":"+String.format("%02d",startMinute));
                 tvStartDay.setText(String.valueOf(startDay)+"/"+String.valueOf(startMonth)+"/"+String.valueOf(startYear));
-
                 alertDay = alertDate.toDate().getDate();
                 alertMonth = alertDate.toDate().getMonth();
                 alertYear = alertDate.toDate().getYear()+1900;
@@ -182,7 +178,6 @@ public class CreateTaskActivity extends AppCompatActivity {
                 alertMinute = alertDate.toDate().getMinutes();
                 tvAlertTime.setText(String.format( "%02d",alertHour)+":"+String.format("%02d",alertMinute));
                 tvAlertDay.setText(String.valueOf(alertDay)+"/"+String.valueOf(alertMonth)+"/"+String.valueOf(alertYear));
-
                 endDay = endDate.toDate().getDate();
                 endMonth = endDate.toDate().getMonth();
                 endYear = endDate.toDate().getYear()+1900;
@@ -193,6 +188,8 @@ public class CreateTaskActivity extends AppCompatActivity {
             }
         }
         final String id = id_get;
+
+        createNotificationChannel();
 
 
         categoryReference = db.collection("taskCategory");
@@ -343,6 +340,8 @@ public class CreateTaskActivity extends AppCompatActivity {
                     Timestamp alertDate = new Timestamp(date);
                     date = (Date)format.parse(eDate);
                     Timestamp endDate = new Timestamp(date);
+                    int hash = (alertDate.hashCode()+endDate.hashCode()+startDate.hashCode())/10;
+                    int startHash = hash+1;
                     calendar = Calendar.getInstance();
                     DocumentReference documentReference = db.document("Users/"+user.getUid());
                     Date currentTime = (Date)format.parse(calendar.get(Calendar.DAY_OF_MONTH)+"-"+(calendar.get(Calendar.MONTH)+1)+"-"+calendar.get(Calendar.YEAR)+"T"+
@@ -357,10 +356,45 @@ public class CreateTaskActivity extends AppCompatActivity {
                                 }else {
                                     db.collection("Tasks").document().set(task);
                                 }
-                                taskCategory taskCategory = new taskCategory(String.valueOf(etCategory.getText()), documentReference);
-                                db.collection("taskCategory").document().set(taskCategory);
-                                Intent intent = new Intent(view.getContext(),MainActivity.class);
-                                startActivity(intent);
+                                final Boolean[] exist = {false};
+                                TaskCategory taskCategory = new TaskCategory(String.valueOf(etCategory.getText()), documentReference);
+                                db.collection("taskCategory").whereEqualTo("userID", documentReference).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onComplete(@NonNull com.google.android.gms.tasks.Task<QuerySnapshot> task) {
+                                        if(task.isSuccessful()){
+                                            for(QueryDocumentSnapshot document : task.getResult()){
+                                                if(document.getString("category").equals(taskCategory.getCategory())){
+                                                    exist[0] = true;
+                                                }
+                                            }
+                                            if(exist[0].equals(false)){
+                                                db.collection("taskCategory").document().set(taskCategory);
+                                            }
+                                            else{
+                                                Log.d("EXIST", "Category exists");
+                                            }
+                                        }
+                                    }
+                                });
+                                Intent intentDone = new Intent(view.getContext(),MainActivity.class);
+                                //alert notification
+                                Intent intent = new Intent(view.getContext(), TaskBroadcast.class).putExtra("name", etName.getText().toString()).putExtra("description", "Starts at "+String.format( "%02d",startHour)+":"+String.format( "%02d",startMinute))
+                                        .putExtra("id",hash);
+                                PendingIntent pendingIntent = PendingIntent.getBroadcast(view.getContext(), hash, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+
+                                AlarmManager alarmManager =(AlarmManager) getSystemService(ALARM_SERVICE);
+                                long time = alertDate.getSeconds()*1000;
+                                Log.d("ALARM",String.valueOf(time));
+                                alarmManager.set(AlarmManager.RTC_WAKEUP,time, pendingIntent);
+
+                                //start notification
+                                Intent startIntent = new Intent(view.getContext(), TaskBroadcast.class).putExtra("name", etName.getText().toString()).putExtra("description", etDescription.getText().toString())
+                                        .putExtra("id", startHash);
+                                PendingIntent startPendingIntent = PendingIntent.getBroadcast(view.getContext(), startHash, startIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+                                long startTime = startDate.getSeconds()*1000;
+                                alarmManager.set(AlarmManager.RTC_WAKEUP, startTime, startPendingIntent);
+
+                                startActivity(intentDone);
                             }
                             else{
                                 Toast toast = new Toast(CreateTaskActivity.this);
@@ -398,5 +432,16 @@ public class CreateTaskActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void createNotificationChannel(){
+        String name = "Task reminder";
+        String description = "Task reminder";
+        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        NotificationChannel channel = new NotificationChannel("taskHabitary", name, importance);
+        channel.setDescription(description);
+
+        NotificationManager notificationManager = getSystemService(NotificationManager.class);
+        notificationManager.createNotificationChannel(channel);
     }
 }

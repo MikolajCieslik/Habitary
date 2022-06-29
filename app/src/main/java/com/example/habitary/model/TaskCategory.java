@@ -2,15 +2,15 @@ package com.example.habitary.model;
 
 import com.google.firebase.firestore.DocumentReference;
 
-public class taskCategory {
+public class TaskCategory {
     String Category;
     DocumentReference userID;
 
-    public taskCategory(){
+    public TaskCategory(){
 
     }
 
-    public taskCategory(String category, DocumentReference userID){
+    public TaskCategory(String category, DocumentReference userID){
         this.Category = category;
         this.userID = userID;
     }
