@@ -14,4 +14,7 @@
     <color name="textColorPrimary">#36215d</color>
     <color name="textColorSecondary">#7049cb</color>
     <color name="background">#dad2f7</color>
+
+    <color name="style_primary">#3d2a90</color>
+    <color name="style_secondary">#6f47e4</color>
 </resources>
