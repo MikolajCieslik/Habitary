@@ -139,6 +139,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         String id_get = "";
         String name;
         String description;
+        String category;
         Long startDateStr;
         Long alertDateStr;
         Long endDateStr;
@@ -154,6 +155,7 @@ public class CreateTaskActivity extends AppCompatActivity {
                 id_get = bundle.getString("id");
                 name = bundle.getString("name");
                 description = bundle.getString("description");
+                category = bundle.getString("category");
                 startDateStr = bundle.getLong ("startDate");
                 alertDateStr = bundle.getLong ("alertDate");
                 endDateStr = bundle.getLong ("endDate");
@@ -167,6 +169,7 @@ public class CreateTaskActivity extends AppCompatActivity {
                 changed = true;
                 etName.setText(name);
                 etDescription.setText(description);
+                etCategory.setText(category);
 
                 startMinute = startDate.toDate().getMinutes();
                 tvStartTime.setText(String.format( "%02d",startHour)+":"+String.format("%02d",startMinute));
