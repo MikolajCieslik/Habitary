@@ -7,7 +7,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/background_light">
 
         <TextView
             android:id="@+id/title_profile"
@@ -16,15 +17,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:text="@string/title_profile"
-            android:textColor="@color/colorPrimary"
-            android:textStyle="bold"/>
+            android:textColor="@color/background_light"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/title_profile"
-            android:text="@string/signed_out"/>
+            android:text="@string/signed_out" />
 
         <LinearLayout
             android:id="@+id/provider_fields"
@@ -51,7 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_provider"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/background_light"
                 android:textStyle="bold" />
 
             <TextView
@@ -73,17 +74,17 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:background="@android:color/darker_gray"/>
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_update_profile"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"/>
+                android:textColor="@color/background_light"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/field_login"
@@ -97,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_name"
-                android:inputType="textPersonName"/>
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/field_surname"
@@ -111,14 +112,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_photo"
-                android:inputType="textUri"/>
+                android:inputType="textUri" />
 
             <Button
                 android:id="@+id/update_profile_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/title_update_profile"
-                android:theme="@style/ThemeOverlay.MyDarkButton"/>
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
 
         </LinearLayout>
 
@@ -132,31 +133,31 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:background="@android:color/darker_gray"/>
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_update_email"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"/>
+                android:textColor="@color/background_light"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/field_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_email"
-                android:inputType="textEmailAddress"/>
+                android:inputType="textEmailAddress" />
 
             <Button
                 android:id="@+id/update_email_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/title_update_email"
-                android:theme="@style/ThemeOverlay.MyDarkButton"/>
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
 
         </LinearLayout>
 
@@ -170,31 +171,31 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:background="@android:color/darker_gray"/>
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_update_password"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"/>
+                android:textColor="@color/background_light"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/field_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_password"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword" />
 
             <Button
                 android:id="@+id/update_password_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/title_update_password"
-                android:theme="@style/ThemeOverlay.MyDarkButton"/>
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
 
         </LinearLayout>
 
@@ -208,31 +209,31 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:background="@android:color/darker_gray"/>
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/title_send_password_reset"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"/>
+                android:textColor="@color/background_light"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/field_email_reset"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_email"
-                android:inputType="textEmailAddress"/>
+                android:inputType="textEmailAddress" />
 
             <Button
                 android:id="@+id/send_password_reset_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/title_send_password_reset"
-                android:theme="@style/ThemeOverlay.MyDarkButton"/>
+                android:theme="@style/ThemeOverlay.MyDarkButton" />
 
         </LinearLayout>
 
@@ -247,15 +248,15 @@
                 android:id="@+id/line"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:background="@android:color/darker_gray"/>
+                android:layout_marginBottom="@dimen/activity_vertical_margin"
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/delete_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/title_delete_user"/>
+                android:text="@string/title_delete_user" />
 
         </LinearLayout>
 

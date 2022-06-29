@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardElevation="8dp"
-    app:cardCornerRadius="8dp"
     android:layout_margin="16dp"
-    >
+    android:background="@color/background_light"
+    app:cardBackgroundColor="@color/background_light"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_gravity="center"
         android:layout_marginVertical="6dp"
-        android:orientation="vertical"
-        android:layout_gravity="center">
+        android:layout_marginStart="16dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -29,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/stringName"
-                android:textColor="@color/black"
+                android:textColor="@color/text_night"
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
@@ -45,20 +46,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/stringCategory"
-                android:textColor="@color/black"
+                android:textColor="@color/text_night"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/category"
                 android:layout_marginStart="8dp"
                 android:text=""
-                android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textColor="@color/text_night"
+                android:textSize="20sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -69,20 +71,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/stringDescription"
-                android:textColor="@color/black"
+                android:textColor="@color/text_night"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/description"
                 android:layout_marginStart="8dp"
                 android:text=""
-                android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textColor="@color/text_night"
+                android:textSize="20sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -93,20 +96,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/stringStartDate"
-                android:textColor="@color/black"
+                android:textColor="@color/text_night"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/startDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/startDate"
                 android:layout_marginStart="8dp"
                 android:text=""
-                android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textColor="@color/text_night"
+                android:textSize="20sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -117,18 +121,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/stringEndDate"
-                android:textColor="@color/black"
+                android:textColor="@color/text_night"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/endDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/endDate"
                 android:layout_marginStart="8dp"
                 android:text=""
-                android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textColor="@color/text_night"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -136,14 +140,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal" />
 
         <ImageButton
             android:id="@+id/editButton2"
             android:layout_width="106dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:backgroundTint="@color/textColorSecondary"
+            android:backgroundTint="@color/style_secondary"
             app:srcCompat="@drawable/ic_baseline_edit_24" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>
