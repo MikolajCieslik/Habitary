@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static int SPLASH_TIMER = 4000;
+    private static int SPLASH_TIMER = 1000;
 
     //Variable
     ImageView front_image;

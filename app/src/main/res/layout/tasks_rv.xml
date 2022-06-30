@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/stringName"
-                android:textColor="@color/black"
+                android:textColor="@color/tasks_rv_txt"
                 android:textSize="28sp"
                 android:textStyle="bold" />
 
@@ -45,18 +45,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/stringCategory"
-                android:textColor="@color/black"
+                android:textColor="@color/tasks_rv_txt"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/category"
                 android:layout_marginStart="8dp"
                 android:text=""
-                android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textColor="@color/tasks_rv_txt"
+                android:textSize="20sp" />
 
         </LinearLayout>
         <LinearLayout
@@ -69,18 +69,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/stringDescription"
-                android:textColor="@color/black"
+                android:textColor="@color/tasks_rv_txt"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/description"
                 android:layout_marginStart="8dp"
                 android:text=""
-                android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textColor="@color/tasks_rv_txt"
+                android:textSize="20sp" />
 
         </LinearLayout>
         <LinearLayout
@@ -93,18 +93,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/stringStartDate"
-                android:textColor="@color/black"
+                android:textColor="@color/tasks_rv_txt"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/startDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/startDate"
                 android:layout_marginStart="8dp"
                 android:text=""
-                android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textColor="@color/tasks_rv_txt"
+                android:textSize="20sp" />
 
         </LinearLayout>
         <LinearLayout
@@ -117,18 +117,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/stringEndDate"
-                android:textColor="@color/black"
+                android:textColor="@color/tasks_rv_txt"
                 android:textSize="26sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/endDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/endDate"
                 android:layout_marginStart="8dp"
                 android:text=""
-                android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textColor="@color/tasks_rv_txt"
+                android:textSize="20sp" />
 
         </LinearLayout>
 
@@ -143,7 +143,7 @@
             android:layout_width="106dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:backgroundTint="@color/textColorSecondary"
+            android:backgroundTint="@color/tasks_rv_btn"
             app:srcCompat="@drawable/ic_baseline_edit_24" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

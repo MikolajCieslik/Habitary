@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/pomodoro_bg">
 
     <TextView
         android:id="@+id/tvTimer"
@@ -12,6 +13,7 @@
         android:layout_marginBottom="380dp"
         android:text="0:00"
         android:textAlignment="center"
+        android:textColor="@color/pomodoro_txt"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,11 +22,14 @@
 
     <Button
         android:id="@+id/btnStartPom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="260dp"
-        android:layout_marginBottom="224dp"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="180dp"
+        android:layout_height="85dp"
+        android:layout_marginEnd="212dp"
+        android:layout_marginBottom="208dp"
+        android:backgroundTint="@color/pomodoro_btn"
         android:text="Start"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -34,9 +39,10 @@
         android:layout_height="111dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="40dp"
-        android:text="Pomodoro technique timer"
+        android:text="🍅Pomodoro Timer🍅"
         android:textAlignment="center"
-        android:textSize="34sp"
+        android:textColor="@color/pomodoro_txt"
+        android:textSize="33sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -48,17 +54,21 @@
         android:layout_marginEnd="149dp"
         android:text="BREAK!"
         android:textAlignment="center"
+        android:textColor="@color/pomodoro_txt"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPomTitle" />
 
     <Button
         android:id="@+id/btnResetPom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="92dp"
-        android:layout_marginBottom="223dp"
+        style="@style/Widget.Material3.Button"
+        android:layout_width="180dp"
+        android:layout_height="85dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="208dp"
+        android:backgroundTint="@color/pomodoro_btn"
         android:text="Reset"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

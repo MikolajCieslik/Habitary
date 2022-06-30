@@ -5,13 +5,13 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
+
     <color name="colorPrimary">#fff</color>
     <color name="colorPrimaryDark">#fff</color>
 
     <color name="textColorPrimary">#36215d</color>
     <color name="textColorSecondary">#7049cb</color>
     <color name="background">#dad2f7</color>
-
 
     <color name="colorAccent">#448AFF</color>
     <color name="style_primary">#3d2a90</color>
@@ -26,33 +26,32 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="menu_left_drawer_bg">#FFFFFF</color>
-    <color name="about_fragment_txt">#FF000000</color>
-    <color name="about_fragment_bg">#FFFFFFFF</color>
-    <color name="activity_main_appbar">#FFFFFF</color>
-    <color name="activity_main_container">#FFFFFF</color>
-    <color name="activity_create_habit_txt">#3d2a90</color>
-    <color name="activity_create_habit_txtbtn">#FFFFFF</color>
-    <color name="activity_create_habit_bg">#FFFFFF</color>
+    <color name="menu_left_drawer_bg">#3c3f41</color>
+    <color name="about_fragment_txt">#e1d8ff</color>
+    <color name="about_fragment_bg">#3c3f41</color>
+    <color name="activity_main_appbar">#3c3f41</color>
+    <color name="activity_main_container">#3c3f41</color>
+    <color name="activity_create_habit_txt">#e1d8ff</color>
+    <color name="activity_create_habit_txtbtn">#FFFFFFFF</color>
+    <color name="activity_create_habit_bg">#3c3f41</color>
     <color name="activity_create_habit_toolbar">#6f47e4</color>
     <color name="activity_emailpassword_bg">#3c3f41</color>
     <color name="activity_manage_user_btn">#6f47e4</color>
-    <color name="activity_manage_user_txt">#FF000000</color>
-    <color name="activity_manage_user_bg">#FFFFFFFF</color>
-    <color name="each_habit_bg">#FFFFFF</color>
+    <color name="activity_manage_user_txt">#e1d8ff</color>
+    <color name="activity_manage_user_bg">#3c3f41</color>
+    <color name="each_habit_bg">#3c3f41</color>
     <color name="each_habit_btn">#6f47e4</color>
-    <color name="each_habit_txt">#3d2a90</color>
-    <color name="pomodoro_txt">#3d2a90</color>
+    <color name="each_habit_txt">#e1d8ff</color>
+    <color name="pomodoro_txt">#e1d8ff</color>
     <color name="pomodoro_btn">#6f47e4</color>
-    <color name="pomodoro_bg">#FFFFFFFF</color>
-    <color name="fragment_create_task_txt">#3d2a90</color>
-    <color name="fragment_create_task_bg">#FFFFFFFF</color>
+    <color name="pomodoro_bg">#3c3f41</color>
+    <color name="fragment_create_task_txt">#e1d8ff</color>
+    <color name="fragment_create_task_bg">#3c3f41</color>
     <color name="fragment_habits_btn">#6f47e4</color>
-    <color name="fragment_main_view_txt">#3d2a90</color>
+    <color name="fragment_main_view_txt">#e1d8ff</color>
     <color name="fragment_text_btn">#3d2a90</color>
-    <color name="fragment_text_txtbg">#3c3f41</color>
-    <color name="fragment_text_txt">#e1d8ff</color>
-    <color name="tasks_rv_txt">#3d2a90</color>
+    <color name="fragment_text_txtbg">#FFFFFFFF</color>
+    <color name="fragment_text_txt">#3d2a90</color>
+    <color name="tasks_rv_txt">#e1d8ff</color>
     <color name="tasks_rv_btn">#6f47e4</color>
-
 </resources>

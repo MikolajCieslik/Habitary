@@ -20,7 +20,7 @@
         android:layout_width="66dp"
         android:layout_height="62dp"
         android:layout_gravity="right"
-        android:backgroundTint="@color/textColorSecondary"
+        android:backgroundTint="@color/fragment_habits_btn"
         android:src="@android:drawable/ic_popup_sync"
         tools:ignore="SpeakableTextPresentCheck" />
 

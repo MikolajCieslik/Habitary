@@ -7,7 +7,7 @@
         <item>HABITS</item>
         <item>POMODORO</item>
         <item>ABOUT</item>
-        <item>NIGHT MODE</item>
+        <item>LIGHT MODE</item>
         <item />
         <item>SETTINGS</item>
     </string-array>
@@ -18,7 +18,7 @@
         <item>@drawable/list</item>
         <item>@drawable/pomodoro</item>
         <item>@drawable/info</item>
-        <item>@drawable/nightmode</item>
+        <item>@drawable/lightmode</item>
         <item>0</item>
         <item>@drawable/settings</item>
     </array>

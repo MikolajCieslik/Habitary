@@ -1,6 +1,7 @@
 package com.example.habitary;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -50,7 +52,8 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private static final int POS_HABITS = 2;
     private static final int POS_POMODORO = 3;
     private static final int POS_ABOUT = 4;
-    private static final int POS_SETTINGS = 6;
+    private static final int POS_NIGHTMODE = 5;
+    private static final int POS_SETTINGS = 7;
 
     private String[] screenTitles;
     private Drawable[] screenIcons;
@@ -86,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
                 createItemFor(POS_HABITS),
                 createItemFor(POS_POMODORO),
                 createItemFor(POS_ABOUT),
+                createItemFor(POS_NIGHTMODE),
                 new SpaceItem(250),
                 createItemFor(POS_SETTINGS)));
         adapter.setListener(this);
@@ -97,7 +101,30 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
         adapter.setSelected(POS_HOME);
 
+        SharedPreferences sharedPreferences
+                = getSharedPreferences(
+                "sharedPrefs", MODE_PRIVATE);
+        final SharedPreferences.Editor editor
+                = sharedPreferences.edit();
+        final boolean isDarkModeOn
+                = sharedPreferences
+                .getBoolean(
+                        "isDarkModeOn", false);
 
+        if(isDarkModeOn) {
+            AppCompatDelegate
+                    .setDefaultNightMode(
+                            AppCompatDelegate
+                                    .MODE_NIGHT_YES);
+
+        }
+        else {
+            AppCompatDelegate
+                    .setDefaultNightMode(
+                            AppCompatDelegate
+                                    .MODE_NIGHT_NO);
+
+        }
     }
 
     @Override
@@ -140,6 +167,36 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
         else if (position == POS_ABOUT){
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new AboutFragment()).commit();
         }
+        else if (position == POS_NIGHTMODE) {
+
+            SharedPreferences sharedPreferences
+                    = getSharedPreferences(
+                    "sharedPrefs", MODE_PRIVATE);
+            final SharedPreferences.Editor editor
+                    = sharedPreferences.edit();
+            final boolean isDarkModeOn
+                    = sharedPreferences
+                    .getBoolean(
+                            "isDarkModeOn", false);
+
+            if (isDarkModeOn) {
+                AppCompatDelegate
+                        .setDefaultNightMode(
+                                AppCompatDelegate
+                                        .MODE_NIGHT_NO);
+                editor.putBoolean(
+                        "isDarkModeOn", false);
+                editor.apply();
+            } else {
+                AppCompatDelegate
+                        .setDefaultNightMode(
+                                AppCompatDelegate
+                                        .MODE_NIGHT_YES);
+                editor.putBoolean(
+                        "isDarkModeOn", true);
+                editor.apply();
+            }
+        }
         else if (position == POS_SETTINGS){
             startActivity(new Intent(MainActivity.this, ManageUserActivity.class));
         }
@@ -167,8 +224,8 @@ public class MainActivity extends AppCompatActivity implements DrawerAdapter.OnI
     @SuppressWarnings("rawtypes")
     private DrawerItem createItemFor(int position) {
         return new SimpleItem(screenIcons[position], screenTitles[position])
-                .withIconTint(color(R.color.textColorSecondary))
-                .withTextTint(color(R.color.textColorPrimary))
+                .withIconTint(color(R.color.style_secondary))
+                .withTextTint(color(R.color.style_secondary))
                 .withSelectedIconTint(color(R.color.colorAccent))
                 .withSelectedTextTint(color(R.color.colorAccent));
     }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/activity_create_habit_bg"
     tools:context=".CreateTaskActivity"><![CDATA[
 
     android:layout_width="match_parent"
@@ -15,7 +16,7 @@
         android:id="@+id/materialToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/textColorSecondary"
+        android:background="@color/activity_create_habit_toolbar"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +30,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="30dp"
         android:text="@string/name"
-        android:textColor="@color/textColorPrimary"
+        android:textColor="@color/activity_create_habit_txt"
         android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="visible"
@@ -45,6 +46,7 @@
         android:ems="10"
         android:inputType="text"
         android:minHeight="48dp"
+        android:textColor="@color/activity_create_habit_txt"
         android:textColorHighlight="@color/textColorPrimary"
         android:textColorLink="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +61,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="84dp"
         android:text="@string/start_time"
-        android:textColor="@color/textColorPrimary"
+        android:textColor="@color/activity_create_habit_txt"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvDescription" />
@@ -71,6 +73,7 @@
         android:layout_marginTop="68dp"
         android:layout_marginEnd="28dp"
         android:text="fsefsefsefes"
+        android:textColor="@color/activity_create_habit_txt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etDescription" />
 
@@ -81,6 +84,7 @@
         android:layout_marginStart="92dp"
         android:layout_marginTop="68dp"
         android:text="sfsgeseg"
+        android:textColor="@color/activity_create_habit_txt"
         app:layout_constraintStart_toEndOf="@+id/tvBeginDate"
         app:layout_constraintTop_toBottomOf="@+id/etDescription" />
 
@@ -92,6 +96,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginEnd="23dp"
         android:text="TextView"
+        android:textColor="@color/activity_create_habit_txt"
         app:layout_constraintEnd_toStartOf="@+id/tvEndTime"
         app:layout_constraintStart_toEndOf="@+id/tvEndDate"
         app:layout_constraintTop_toBottomOf="@+id/tvAlertDay" />
@@ -103,6 +108,7 @@
         android:layout_marginTop="39dp"
         android:layout_marginEnd="24dp"
         android:text="TextView"
+        android:textColor="@color/activity_create_habit_txt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAlertTime" />
 
@@ -113,7 +119,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="38dp"
         android:text="@string/end_time"
-        android:textColor="@color/textColorPrimary"
+        android:textColor="@color/activity_create_habit_txt"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAlertDate" />
@@ -125,7 +131,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="52dp"
         android:text="@string/category"
-        android:textColor="@color/textColorPrimary"
+        android:textColor="@color/activity_create_habit_txt"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -153,7 +159,7 @@
         android:layout_marginEnd="24dp"
         android:text="@string/save"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/activity_create_habit_txtbtn"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -176,7 +182,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="117dp"
         android:text="@string/description"
-        android:textColor="@color/textColorPrimary"
+        android:textColor="@color/activity_create_habit_txt"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -192,6 +198,7 @@
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:minHeight="48dp"
+        android:textColor="@color/activity_create_habit_txt"
         android:textColorHighlight="@color/textColorPrimary"
         android:textColorLink="@color/textColorPrimary"
         app:layout_constraintEnd_toEndOf="parent"
@@ -207,7 +214,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="56dp"
         android:text="Alert time"
-        android:textColor="@color/textColorPrimary"
+        android:textColor="@color/activity_create_habit_txt"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvBeginDate" />
@@ -220,6 +227,7 @@
         android:layout_marginTop="58dp"
         android:layout_marginEnd="19dp"
         android:text="TextView"
+        android:textColor="@color/activity_create_habit_txt"
         app:layout_constraintEnd_toStartOf="@+id/tvAlertTime"
         app:layout_constraintStart_toEndOf="@+id/tvAlertDate"
         app:layout_constraintTop_toBottomOf="@+id/tvStartDay" />
@@ -231,6 +239,7 @@
         android:layout_marginTop="56dp"
         android:layout_marginEnd="32dp"
         android:text="TextView"
+        android:textColor="@color/activity_create_habit_txt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvStartTime" />
 
@@ -252,6 +261,7 @@
         android:layout_marginEnd="94dp"
         android:buttonTint="@color/textColorPrimary"
         android:text="Add new Category"
+        android:textColor="@color/activity_create_habit_txt"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etCategory" />

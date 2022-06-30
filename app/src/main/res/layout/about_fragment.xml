@@ -10,6 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/about_fragment_bg"
         android:orientation="vertical">
 
         <TextView
@@ -23,6 +24,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Habitary Team"
+            android:textColor="@color/style_secondary"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -37,7 +39,7 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/imageView"
@@ -65,25 +67,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Damian Dowejko "
+                        android:textColor="@color/about_fragment_txt"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textView6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Team Leader " />
+                        android:text="Team Leader "
+                        android:textColor="@color/about_fragment_txt" />
 
                     <TextView
                         android:id="@+id/textView24"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Frontend dev " />
+                        android:text="Frontend dev "
+                        android:textColor="@color/about_fragment_txt" />
                 </LinearLayout>
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -111,25 +116,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Norbert Bartosiak "
+                        android:textColor="@color/about_fragment_txt"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textView14"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Backend dev  " />
+                        android:text="Backend dev  "
+                        android:textColor="@color/about_fragment_txt" />
 
                     <TextView
                         android:id="@+id/textView25"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Deployment " />
+                        android:text="Deployment "
+                        android:textColor="@color/about_fragment_txt" />
                 </LinearLayout>
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/imageView3"
@@ -157,25 +165,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Mikołaj Cieślik "
+                        android:textColor="@color/about_fragment_txt"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textView17"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Backend dev " />
+                        android:text="Backend dev "
+                        android:textColor="@color/about_fragment_txt" />
 
                     <TextView
                         android:id="@+id/textView26"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Database eng." />
+                        android:text="Database eng."
+                        android:textColor="@color/about_fragment_txt" />
                 </LinearLayout>
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/imageView4"
@@ -203,25 +214,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Bartłomiej Gajda "
+                        android:textColor="@color/about_fragment_txt"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textView20"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Frontend dev " />
+                        android:text="Frontend dev "
+                        android:textColor="@color/about_fragment_txt" />
 
                     <TextView
                         android:id="@+id/textView27"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="UI / UX " />
+                        android:text="UI / UX "
+                        android:textColor="@color/about_fragment_txt" />
                 </LinearLayout>
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <ImageView
                     android:id="@+id/imageView5"
@@ -249,19 +263,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Jakub Lefik "
+                        android:textColor="@color/about_fragment_txt"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/textView23"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Backend dev " />
+                        android:text="Backend dev "
+                        android:textColor="@color/about_fragment_txt" />
 
                     <TextView
                         android:id="@+id/textView28"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Documentation " />
+                        android:text="Documentation "
+                        android:textColor="@color/about_fragment_txt" />
                 </LinearLayout>
             </TableRow>
         </TableLayout>
@@ -277,6 +294,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Contact Us"
+            android:textColor="@color/about_fragment_txt"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -289,25 +307,29 @@
             android:id="@+id/textView34"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Habitary welcomes your questions or comments" />
+            android:text="Habitary welcomes your questions or comments"
+            android:textColor="@color/about_fragment_txt" />
 
         <TextView
             android:id="@+id/textView35"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Habitary App Inc." />
+            android:text="Habitary App Inc."
+            android:textColor="@color/about_fragment_txt" />
 
         <TextView
             android:id="@+id/textView36"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pomorska 149/153" />
+            android:text="Pomorska 149/153"
+            android:textColor="@color/about_fragment_txt" />
 
         <TextView
             android:id="@+id/textView37"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="90-001 Łódź" />
+            android:text="90-001 Łódź"
+            android:textColor="@color/about_fragment_txt" />
 
         <TextView
             android:id="@+id/textView38"
@@ -319,6 +341,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Email Address:"
+            android:textColor="@color/about_fragment_txt"
             android:textSize="16sp" />
 
         <TextView
@@ -326,6 +349,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="support@habitaryapp.com"
+            android:textColor="@color/about_fragment_txt"
             android:textSize="16sp" />
 
         <TextView
@@ -339,6 +363,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="End User Licence Agreement"
+            android:textColor="@color/about_fragment_txt"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -351,7 +376,8 @@
             android:id="@+id/textView44"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Habitary is licensed to You (End-User) by Habitary App Inc., located and registered at Pomorska 149/153, Łódź, Łódzkie 90-001, Poland, for use only under the terms of this Licence Agreement. Our VAT number is 9999999999999999. By downloading the Licensed Application from Google's software distribution platform , and any update thereto (as permitted by this Licence Agreement), You indicate that You agree to be bound by all of the terms and conditions of this Licence Agreement, and that You accept this Licence Agreement. Play Store is referred to in this Licence Agreement. The parties of this Licence Agreement acknowledge that the Services are not a Party to this Licence Agreement and are not bound by any provisions or obligations with regard to the Licensed Application, such as warranty, liability, maintenance and support thereof. Habitary App Inc., not the Services, is solely responsible for the Licensed Application and the content thereof. This Licence Agreement may not provide for usage rules for the Licensed Application that are in conflict with the latest Google Play Terms of Service. Habitary App Inc. acknowledges that it had the opportunity to review the Usage Rules and this Licence Agreement is not conflicting with them. Habitary when purchased or downloaded through the Services, is licensed to You for use only under the terms of this Licence Agreement. The Licensor reserves all rights not expressly granted to You. Habitary is to be used on devices that operate with Google's operating system ('Android')." />
+            android:text="Habitary is licensed to You (End-User) by Habitary App Inc., located and registered at Pomorska 149/153, Łódź, Łódzkie 90-001, Poland, for use only under the terms of this Licence Agreement. Our VAT number is 9999999999999999. By downloading the Licensed Application from Google's software distribution platform , and any update thereto (as permitted by this Licence Agreement), You indicate that You agree to be bound by all of the terms and conditions of this Licence Agreement, and that You accept this Licence Agreement. Play Store is referred to in this Licence Agreement. The parties of this Licence Agreement acknowledge that the Services are not a Party to this Licence Agreement and are not bound by any provisions or obligations with regard to the Licensed Application, such as warranty, liability, maintenance and support thereof. Habitary App Inc., not the Services, is solely responsible for the Licensed Application and the content thereof. This Licence Agreement may not provide for usage rules for the Licensed Application that are in conflict with the latest Google Play Terms of Service. Habitary App Inc. acknowledges that it had the opportunity to review the Usage Rules and this Licence Agreement is not conflicting with them. Habitary when purchased or downloaded through the Services, is licensed to You for use only under the terms of this Licence Agreement. The Licensor reserves all rights not expressly granted to You. Habitary is to be used on devices that operate with Google's operating system ('Android')."
+            android:textColor="@color/about_fragment_txt" />
 
         <TextView
             android:id="@+id/textView45"
@@ -364,6 +390,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Agreement Between User and Habitary"
+            android:textColor="@color/about_fragment_txt"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -376,7 +403,8 @@
             android:id="@+id/textView48"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Your use of Habitary constitutes your agreement to all such Terms. Please read these terms carefully, and keep a copy of them for your reference." />
+            android:text="Your use of Habitary constitutes your agreement to all such Terms. Please read these terms carefully, and keep a copy of them for your reference."
+            android:textColor="@color/about_fragment_txt" />
 
         <TextView
             android:id="@+id/textView49"
@@ -389,6 +417,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Your Account"
+            android:textColor="@color/about_fragment_txt"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -401,7 +430,8 @@
             android:id="@+id/textView52"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Habitary  does not knowingly collect, either online or offline, personal information from persons under the age of thirteen. If you are under 18, you may use Habitary  only with permission of a parent or guardian" />
+            android:text="Habitary  does not knowingly collect, either online or offline, personal information from persons under the age of thirteen. If you are under 18, you may use Habitary  only with permission of a parent or guardian"
+            android:textColor="@color/about_fragment_txt" />
 
         <TextView
             android:id="@+id/textView53"
@@ -414,6 +444,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Intellectual Property Rights"
+            android:textColor="@color/about_fragment_txt"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -426,7 +457,8 @@
             android:id="@+id/textView59"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Habitary App Inc. and the End-User acknowledge that, in the event of any third-party claim that the Licensed Application or the End-User's possession and use of that Licensed Application infringes on the third party's intellectual property rights, Habitary App Inc., and not the Services, will be solely responsible for the investigation, defence, settlement, and discharge or any such intellectual property infringement claims." />
+            android:text="Habitary App Inc. and the End-User acknowledge that, in the event of any third-party claim that the Licensed Application or the End-User's possession and use of that Licensed Application infringes on the third party's intellectual property rights, Habitary App Inc., and not the Services, will be solely responsible for the investigation, defence, settlement, and discharge or any such intellectual property infringement claims."
+            android:textColor="@color/about_fragment_txt" />
 
         <TextView
             android:id="@+id/textView60"
@@ -439,6 +471,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Version"
+            android:textColor="@color/about_fragment_txt"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -453,6 +486,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="0.53"
+            android:textColor="@color/about_fragment_txt"
             android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
