@@ -28,7 +28,7 @@ public class TaskBroadcast extends BroadcastReceiver {
             Log.d("nazwa",name);
             Log.d("desc",desc);
             Intent intentt = new Intent(context, MainActivity.class);
-            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intentt, PendingIntent.FLAG_IMMUTABLE);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, id, intentt, PendingIntent.FLAG_IMMUTABLE);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "taskHabitary")
                     .setContentIntent(pendingIntent)
                     .setAutoCancel(true)

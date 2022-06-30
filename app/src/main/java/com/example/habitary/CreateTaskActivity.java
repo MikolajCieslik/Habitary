@@ -146,6 +146,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         Timestamp startDate;
         Timestamp alertDate;
         Timestamp endDate;
+        createNotificationChannel();
 
         boolean changed = false;
 
@@ -192,7 +193,6 @@ public class CreateTaskActivity extends AppCompatActivity {
         }
         final String id = id_get;
 
-        createNotificationChannel();
 
 
         categoryReference = db.collection("taskCategory");
@@ -414,8 +414,27 @@ public class CreateTaskActivity extends AppCompatActivity {
                                 }else {
                                     db.collection("Tasks").document().set(task);
                                 }
-                                Intent intent = new Intent(view.getContext(),MainActivity.class);
-                                startActivity(intent);
+                                Intent intentDone = new Intent(view.getContext(),MainActivity.class);
+                                //alert notification
+                                Intent intent = new Intent(view.getContext(), TaskBroadcast.class).putExtra("name", etName.getText().toString()).putExtra("description", "Starts at "+String.format( "%02d",startHour)+":"+String.format( "%02d",startMinute))
+                                        .putExtra("id",hash);
+                                PendingIntent pendingIntent = PendingIntent.getBroadcast(view.getContext(), hash, intent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+
+                                AlarmManager alarmManager =(AlarmManager) getSystemService(ALARM_SERVICE);
+                                long time = alertDate.getSeconds()*1000;
+                                Log.d("ALARM",String.valueOf(time));
+                                alarmManager.set(AlarmManager.RTC_WAKEUP,time, pendingIntent);
+
+                                //start notification
+                                Intent startIntent = new Intent(view.getContext(), TaskBroadcast.class).putExtra("name", etName.getText().toString()).putExtra("description", etDescription.getText().toString())
+                                        .putExtra("id", startHash);
+                                PendingIntent startPendingIntent = PendingIntent.getBroadcast(view.getContext(), startHash, startIntent, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+                                long startTime = startDate.getSeconds()*1000;
+                                alarmManager.set(AlarmManager.RTC_WAKEUP, startTime, startPendingIntent);
+
+                                startActivity(intentDone);
+                                //Intent intent = new Intent(view.getContext(),MainActivity.class);
+                                //startActivity(intent);
                             }
                             else{
                                 Toast toast = new Toast(CreateTaskActivity.this);
@@ -441,6 +460,7 @@ public class CreateTaskActivity extends AppCompatActivity {
         String name = "Task reminder";
         String description = "Task reminder";
         int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        Log.d("channel", "Channel created");
         NotificationChannel channel = new NotificationChannel("taskHabitary", name, importance);
         channel.setDescription(description);
 
