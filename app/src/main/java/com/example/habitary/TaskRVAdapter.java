@@ -66,8 +66,8 @@ public class TaskRVAdapter extends RecyclerView.Adapter<TaskRVAdapter.ViewTaskHo
 
         holder.category.setText(task.getCategory());
         holder.taskName.setText(task.getName());
-        holder.startDate.setText(timeFormat.format(task.getStartDate().toDate().getTime()));
-        holder.endDate.setText(timeFormat.format(task.getEndDate().toDate().getTime()));
+        holder.startDate.setText(dateFormat.format(task.getStartDate().toDate()) + ", " + timeFormat.format(task.getStartDate().toDate().getTime()));
+        holder.endDate.setText(dateFormat.format(task.getEndDate().toDate()) + ", " + timeFormat.format(task.getEndDate().toDate().getTime()));
         holder.description.setText(task.getDescription());
 
         holder.imageButton2.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +76,7 @@ public class TaskRVAdapter extends RecyclerView.Adapter<TaskRVAdapter.ViewTaskHo
                 Intent intent = new Intent(view.getContext(), CreateTaskActivity.class);
                 intent.putExtra("id", task.TasksId);
                 intent.putExtra("name", task.getName());
+                intent.putExtra("category", task.getCategory());
                 intent.putExtra("description", task.getDescription());
                 intent.putExtra("startDate", task.getStartDateStr());
                 intent.putExtra("alertDate", task.getAlertDateStr());
